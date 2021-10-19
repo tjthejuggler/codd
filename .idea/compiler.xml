@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="1.8">
+      <module name="BLE-MIDI-for-Android.BLE-MIDI-library" target="11" />
+      <module name="BLE-MIDI-for-Android.sample" target="11" />
+      <module name="BLE-MIDI-for-Android.sample-wear" target="11" />
+      <module name="codd.BLE-MIDI-library" target="11" />
+      <module name="codd.sample" target="11" />
+      <module name="codd.sample-wear" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

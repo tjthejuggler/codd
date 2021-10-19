@@ -1,0 +1,4 @@
+jp.kshoji.blemidi
+array uuidListForInputCharacteristic
+array uuidListForOutputCharacteristic
+array uuidListForService

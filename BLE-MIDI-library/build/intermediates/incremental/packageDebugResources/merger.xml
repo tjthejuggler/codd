@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/res"/><source path="/home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/build/generated/res/rs/debug"/><source path="/home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/build/generated/res/resValues/debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/res"><file path="/home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/res/values/uuids.xml" qualifiers=""><string-array name="uuidListForService">
+        <item>713d0000-503e-4c75-ba94-3148f18d941e</item>
+        <item>6e400001-b5a3-f393-e0a9-e50e24dcca9e</item>
+        <item>15c3d473-ab76-483f-a874-d08849b8f5c7</item>
+        <item>03b80e5a-ede8-4b33-a751-6ce34ec4c700</item>
+    </string-array><string-array name="uuidListForInputCharacteristic">
+        <item>713d0002-503e-4c75-ba94-3148f18d941e</item>
+        <item>6E400003-B5A3-F393-E0A9-E50E24DCCA9E</item>
+        <item>c26b5a53-04e0-4706-9928-25b035924bc2</item>
+        <item>7772e5db-3868-4112-a1a9-f2669d106bf3</item>
+    </string-array><string-array name="uuidListForOutputCharacteristic">
+        <item>713d0003-503e-4c75-ba94-3148f18d941e</item>
+        <item>6E400002-B5A3-F393-E0A9-E50E24DCCA9E</item>
+        <item>c26b5a53-04e0-4706-9928-25b035924bc2</item>
+        <item>7772e5db-3868-4112-a1a9-f2669d106bf3</item>
+    </string-array></file></source><source path="/home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/build/generated/res/rs/debug"/><source path="/home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/build/generated/res/resValues/debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/debug/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/debug/res"/></dataSet><mergedItems/></merger>

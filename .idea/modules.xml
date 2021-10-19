@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/codd.iml" filepath="$PROJECT_DIR$/.idea/modules/codd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BLE-MIDI-library/codd.BLE-MIDI-library.iml" filepath="$PROJECT_DIR$/.idea/modules/BLE-MIDI-library/codd.BLE-MIDI-library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/UnityPlayerMock/codd.UnityPlayerMock.iml" filepath="$PROJECT_DIR$/.idea/modules/UnityPlayerMock/codd.UnityPlayerMock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample/codd.sample.iml" filepath="$PROJECT_DIR$/.idea/modules/sample/codd.sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample-wear/codd.sample-wear.iml" filepath="$PROJECT_DIR$/.idea/modules/sample-wear/codd.sample-wear.iml" />
+    </modules>
+  </component>
+</project>

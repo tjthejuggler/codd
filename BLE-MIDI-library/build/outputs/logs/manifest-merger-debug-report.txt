@@ -1,0 +1,33 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:1:1-9:12
+INJECTED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:1:1-9:12
+INJECTED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:1:1-9:12
+	package
+		ADDED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:2:5-32
+		INJECTED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml
+		INJECTED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.BLUETOOTH
+ADDED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:4:5-68
+	android:name
+		ADDED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:4:22-65
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:5:5-74
+	android:name
+		ADDED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:5:22-71
+uses-feature#android.hardware.bluetooth_le
+ADDED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:7:5-90
+	android:required
+		ADDED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:7:64-87
+	android:name
+		ADDED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:7:19-63
+uses-sdk
+INJECTED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml
+INJECTED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml
+		ADDED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml
+		INJECTED from /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml
