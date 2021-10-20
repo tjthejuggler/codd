@@ -41,12 +41,18 @@ LICENSE
 
 TODO
 ====
-make current catches large and easily seen
+
 dark color scheme
-desired layout
-big current catches at a glance
-scrollable catch history
-seperate scrollable run history
+design desired layout
+scrollable run history
+  detect run stops
+
+bug
+  once it was counting a ball as 3 catches every time caught, cant reproduce it
+
+figure out how to:
+get ball color
+show catch history as ball colors
 
 eventual layout
 big intensity consistency number

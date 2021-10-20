@@ -382,16 +382,14 @@ public class PeripheralActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView midiInputEventListView = (ListView) findViewById(R.id.midiInputEventListView);
+        ListView midiInputEventListView = (ListView) findViewById(R.id.catchHistory);
         midiInputEventAdapter = new ArrayAdapter<>(this, R.layout.midi_event, R.id.midiEventDescriptionTextView);
         midiInputEventAdapter = new ArrayAdapter<>(this, R.layout.midi_event, R.id.midiEventDescriptionTextView);
         midiInputEventListView.setAdapter(midiInputEventAdapter);
 
-        ListView midiOutputEventListView = (ListView) findViewById(R.id.midiOutputEventListView);
+        ListView midiOutputEventListView = (ListView) findViewById(R.id.runHistory);
         midiOutputEventAdapter = new ArrayAdapter<>(this, R.layout.midi_event, R.id.midiEventDescriptionTextView);
         midiOutputEventListView.setAdapter(midiOutputEventAdapter);
-
-        thruToggleButton = (ToggleButton) findViewById(R.id.toggleButtonThru);
 
         deviceSpinner = (Spinner) findViewById(R.id.deviceNameSpinner);
         connectedOutputDevicesAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.simple_spinner_dropdown_item, android.R.id.text1, new ArrayList<MidiOutputDevice>());
@@ -423,35 +421,10 @@ public class PeripheralActivity extends Activity {
                 return false;
             }
         };
-        findViewById(R.id.buttonC).setOnTouchListener(onToneButtonTouchListener);
-        findViewById(R.id.buttonCis).setOnTouchListener(onToneButtonTouchListener);
-        findViewById(R.id.buttonD).setOnTouchListener(onToneButtonTouchListener);
-        findViewById(R.id.buttonDis).setOnTouchListener(onToneButtonTouchListener);
-        findViewById(R.id.buttonE).setOnTouchListener(onToneButtonTouchListener);
-        findViewById(R.id.buttonF).setOnTouchListener(onToneButtonTouchListener);
-        findViewById(R.id.buttonFis).setOnTouchListener(onToneButtonTouchListener);
-        findViewById(R.id.buttonG).setOnTouchListener(onToneButtonTouchListener);
-        findViewById(R.id.buttonGis).setOnTouchListener(onToneButtonTouchListener);
-        findViewById(R.id.buttonA).setOnTouchListener(onToneButtonTouchListener);
-        findViewById(R.id.buttonAis).setOnTouchListener(onToneButtonTouchListener);
-        findViewById(R.id.buttonB).setOnTouchListener(onToneButtonTouchListener);
-        findViewById(R.id.buttonC2).setOnTouchListener(onToneButtonTouchListener);
 
         int whiteKeyColor = 0xFFFFFFFF;
         int blackKeyColor = 0xFF808080;
-        findViewById(R.id.buttonC).getBackground().setColorFilter(whiteKeyColor, PorterDuff.Mode.MULTIPLY);
-        findViewById(R.id.buttonCis).getBackground().setColorFilter(blackKeyColor, PorterDuff.Mode.MULTIPLY);
-        findViewById(R.id.buttonD).getBackground().setColorFilter(whiteKeyColor, PorterDuff.Mode.MULTIPLY);
-        findViewById(R.id.buttonDis).getBackground().setColorFilter(blackKeyColor, PorterDuff.Mode.MULTIPLY);
-        findViewById(R.id.buttonE).getBackground().setColorFilter(whiteKeyColor, PorterDuff.Mode.MULTIPLY);
-        findViewById(R.id.buttonF).getBackground().setColorFilter(whiteKeyColor, PorterDuff.Mode.MULTIPLY);
-        findViewById(R.id.buttonFis).getBackground().setColorFilter(blackKeyColor, PorterDuff.Mode.MULTIPLY);
-        findViewById(R.id.buttonG).getBackground().setColorFilter(whiteKeyColor, PorterDuff.Mode.MULTIPLY);
-        findViewById(R.id.buttonGis).getBackground().setColorFilter(blackKeyColor, PorterDuff.Mode.MULTIPLY);
-        findViewById(R.id.buttonA).getBackground().setColorFilter(whiteKeyColor, PorterDuff.Mode.MULTIPLY);
-        findViewById(R.id.buttonAis).getBackground().setColorFilter(blackKeyColor, PorterDuff.Mode.MULTIPLY);
-        findViewById(R.id.buttonB).getBackground().setColorFilter(whiteKeyColor, PorterDuff.Mode.MULTIPLY);
-        findViewById(R.id.buttonC2).getBackground().setColorFilter(whiteKeyColor, PorterDuff.Mode.MULTIPLY);
+
 
         soundMaker = SoundMaker.getInstance();
         final int bufferSize = AudioTrack.getMinBufferSize(soundMaker.getSamplingRate(), AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT);

@@ -1,9 +1,5 @@
 jp/kshoji/blemidi/sample/BuildConfig.java
  jp.kshoji.blemidi.sample.BuildConfig
-jp/kshoji/blemidi/sample/util/SoundMaker.java
- jp.kshoji.blemidi.sample.util.SoundMaker
-jp/kshoji/blemidi/sample/util/Tone.java
- jp.kshoji.blemidi.sample.util.Tone
 jp/kshoji/blemidi/sample/PeripheralActivity.java
  jp.kshoji.blemidi.sample.PeripheralActivity
  jp.kshoji.blemidi.sample.PeripheralActivity$1
@@ -19,6 +15,10 @@ jp/kshoji/blemidi/sample/PeripheralActivity.java
  jp.kshoji.blemidi.sample.PeripheralActivity$7
  jp.kshoji.blemidi.sample.PeripheralActivity$8
  jp.kshoji.blemidi.sample.PeripheralActivity$9
+jp/kshoji/blemidi/sample/util/Tone.java
+ jp.kshoji.blemidi.sample.util.Tone
+jp/kshoji/blemidi/sample/util/SoundMaker.java
+ jp.kshoji.blemidi.sample.util.SoundMaker
 jp/kshoji/blemidi/sample/CentralActivity.java
  jp.kshoji.blemidi.sample.CentralActivity
  jp.kshoji.blemidi.sample.CentralActivity$1
