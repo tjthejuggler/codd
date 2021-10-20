@@ -23,6 +23,7 @@ id disconnectButton
 id midiEventDescriptionTextView
 id midiInputEventListView
 id midiOutputEventListView
+id resetButton
 id textView1
 id textView2
 id textView3

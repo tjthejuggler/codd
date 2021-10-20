@@ -22,6 +22,7 @@ int id disconnectButton 0x7f030010
 int id midiEventDescriptionTextView 0x7f030011
 int id midiInputEventListView 0x7f030012
 int id midiOutputEventListView 0x7f030013
+int id resetButton 0x7f030018
 int id textView1 0x7f030014
 int id textView2 0x7f030015
 int id textView3 0x7f030016
