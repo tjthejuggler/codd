@@ -1,5 +1,6 @@
 jp.kshoji.blemidi.sample:string/start_advertise = 0x7f060003
 jp.kshoji.blemidi.sample:id/toggleButtonThru = 0x7f030017
+jp.kshoji.blemidi.sample:id/resetButton = 0x7f030018
 jp.kshoji.blemidi.sample:string/app_name = 0x7f060000
 jp.kshoji.blemidi.sample:string/start_scan = 0x7f060004
 jp.kshoji.blemidi.sample:id/buttonG = 0x7f03000d

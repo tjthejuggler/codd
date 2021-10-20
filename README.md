@@ -38,3 +38,43 @@ For the detail, see the [wiki](https://github.com/kshoji/BLE-MIDI-for-Android/wi
 LICENSE
 =======
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+TODO
+====
+make current catches large and easily seen
+dark color scheme
+desired layout
+big current catches at a glance
+scrollable catch history
+seperate scrollable run history
+
+eventual layout
+big intensity consistency number
+shown and vocal siteswap announcer
+
+
+remove clutter
+get rid of things im not using one by one and see what breaks it
+
+
+change the 2 ball in a row rule to an amount of time in between same ball catches
+keep both methods now for checking
+make site swap identifier
+it could even have an audio feature that tells you what site swap you are doing
+
+detect when juggling stops and make a new entry and save the site swap(eventually) with it
+
+
+Eventually
+use machine learning on the catch values to predict drops
+maybe it should take the patter/site swap into account, maybe just the values leading up to the drop
+
+figure out tv remote sleep setting
+
+RGBRGBRGBRGB 3
+RRGGBBRRGGBB 51
+rgbbrggbrrgbbrgg 441
+
+Music
+use camera software to skeletal track and change instruments based on location as well as catches
+

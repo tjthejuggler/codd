@@ -235,10 +235,13 @@ public class CentralActivity extends Activity {
         @Override
         public void onMidiNoteOn(@NonNull MidiInputDevice sender, int channel, int note, int velocity) {
 
+            //if the same ball is caught twice within a small amount of time, then ignore the
+            //  second time it was caught
+
             if (!sender.getDeviceName().equals(previousName)) {
                 catchCounter++;
                 previousName = sender.getDeviceName();
-                midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "NoteOn from: " + sender.getDeviceName() + " channel: " + channel + ", note: " + note + ", velocity: " + velocity));
+                midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "ball: " + sender.getDeviceName() +"Pball: " + previousName + " ch: " + channel + ", nt: " + note + ", velocity: " + velocity));
 
                 if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                     getBleMidiOutputDeviceFromSpinner().sendMidiNoteOn(channel, note, velocity);
@@ -551,6 +554,15 @@ public class CentralActivity extends Activity {
                 if (bleMidiOutputDeviceFromSpinner != null) {
                     bleMidiCentralProvider.disconnectDevice(bleMidiOutputDeviceFromSpinner);
                 }
+            }
+        });
+
+        Button resetButton = (Button) findViewById(R.id.resetButton);
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    catchCounter = 0;
+                    counterTextView.setText(String.valueOf(catchCounter));
             }
         });
 
