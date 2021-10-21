@@ -5,6 +5,8 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2644927536231884" />
         <entry key="sample/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="sample/src/main/res/layout/midi_event.xml" value="0.24230072463768115" />
+        <entry key="sample/src/main/res/layout/simple_spinner_dropdown_item.xml" value="0.24230072463768115" />
       </map>
     </option>
   </component>

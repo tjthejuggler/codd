@@ -83,4 +83,5 @@ rgbbrggbrrgbbrgg 441
 
 Music
 use camera software to skeletal track and change instruments based on location as well as catches
+collisions could be a different midi signal, or they could be ignored(maybe this is good for gathers)
 
