@@ -73,7 +73,8 @@ detect when juggling stops and make a new entry and save the site swap(eventuall
 
 Eventually
 use machine learning on the catch values to predict drops
-maybe it should take the patter/site swap into account, maybe just the values leading up to the drop
+maybe it should take the pattern/site swap into account, maybe just the values leading up to the drop
+it should probably also take the space between catches into account as well
 
 figure out tv remote sleep setting
 

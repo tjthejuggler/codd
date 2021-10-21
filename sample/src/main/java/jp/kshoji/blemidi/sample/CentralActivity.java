@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
@@ -23,6 +24,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.util.ArrayList;
@@ -59,6 +61,7 @@ public class CentralActivity extends Activity {
     int catchCounter;
     String previousName;
     TextView counterTextView;
+    ListView midiInputEventListView;
 
     boolean isScanning = false;
 
@@ -125,7 +128,39 @@ public class CentralActivity extends Activity {
         @Override
         public boolean handleMessage(Message msg) {
             if (midiInputEventAdapter != null) {
+                //String msgString = (String)msg.obj;
+                //msgString.split("Pball");
+                //msgString = msgString.substring(msgString.indexOf("ball:") + 1);
+                //String ballName = msgString.substring(0, msgString.indexOf("Pball:"));
+
                 midiInputEventAdapter.add((String)msg.obj);
+                if (midiInputEventListView.getChildAt(1) != null) {
+                    View v;
+                    TextView tv;
+                    //TODO
+                    //instead of iterating the listview, we should keep a list of all the
+                    //  throws, and then color the items with that
+                    //the setBackgroundCOlor commands below work if they are given correct indexes,
+                    //  the only problem is that the indexes keep changing every time a new item is added
+                    for (int i = 0; i < midiInputEventListView.getChildCount(); i++) {
+                        v = midiInputEventListView.getAdapter().getView(i, null, null);
+                        tv = (TextView) v.findViewById(i);
+                        String msgString = tv.getText().toString();
+
+
+                        Toast.makeText(getBaseContext(), msgString, Toast.LENGTH_LONG).show();
+                        if (msgString.contains("Gry")) {
+                            midiInputEventListView.getChildAt(i).setBackgroundColor(
+                                    Color.parseColor("#0000FF"));
+                        } else if (msgString.contains("Trq")) {
+                            midiInputEventListView.getChildAt(i).setBackgroundColor(
+                                    Color.parseColor("#00FF00"));
+                        } else {
+                            midiInputEventListView.getChildAt(i).setBackgroundColor(
+                                    Color.parseColor("#FF0000"));
+                        }
+                    }
+                }
             }
             counterTextView.setText(String.valueOf(catchCounter));
             // message handled successfully
@@ -250,23 +285,23 @@ public class CentralActivity extends Activity {
 
 
 
-            synchronized (tones) {
-                if (velocity == 0) {
-                    Iterator<Tone> it = tones.iterator();
-                    while (it.hasNext()) {
-                        Tone tone = it.next();
-                        if (tone.getNote() == note) {
-                            it.remove();
-                        }
-                    }
-                } else {
-                    //catchCounter++;
-                    //counterTextView.setText("test2");
-                    //tv.setText(String.valueOf(number));
-
-                    //tones.add(new Tone(note, velocity / 127.0, currentProgram));
-                }
-            }
+//            synchronized (tones) {
+//                if (velocity == 0) {
+//                    Iterator<Tone> it = tones.iterator();
+//                    while (it.hasNext()) {
+//                        Tone tone = it.next();
+//                        if (tone.getNote() == note) {
+//                            it.remove();
+//                        }
+//                    }
+//                } else {
+//                    //catchCounter++;
+//                    //counterTextView.setText("test2");
+//                    //tv.setText(String.valueOf(number));
+//
+//                    //tones.add(new Tone(note, velocity / 127.0, currentProgram));
+//                }
+//            }
         }
 
         @Override
@@ -444,9 +479,9 @@ public class CentralActivity extends Activity {
 
         counterTextView = (TextView) findViewById(R.id.textView2);
 
-        counterTextView.setText("test");
+        //counterTextView.setText("0");
 
-        ListView midiInputEventListView = (ListView) findViewById(R.id.catchHistory);
+        midiInputEventListView = (ListView) findViewById(R.id.catchHistory);
         midiInputEventAdapter = new ArrayAdapter<>(this, R.layout.midi_event, R.id.midiEventDescriptionTextView);
         midiInputEventAdapter = new ArrayAdapter<>(this, R.layout.midi_event, R.id.midiEventDescriptionTextView);
         midiInputEventListView.setAdapter(midiInputEventAdapter);
