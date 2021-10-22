@@ -85,11 +85,10 @@
     <ListView
         android:id="@+id/runHistory"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="405dp"
         android:layout_weight="1"
         android:stackFromBottom="true"
         android:textColor="#FFF"
-        android:transcriptMode="alwaysScroll" >
-    </ListView>
+        android:transcriptMode="alwaysScroll"></ListView>
 
 </LinearLayout>

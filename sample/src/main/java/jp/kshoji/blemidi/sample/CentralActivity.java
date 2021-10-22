@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -134,7 +135,8 @@ public class CentralActivity extends Activity {
                 //String ballName = msgString.substring(0, msgString.indexOf("Pball:"));
 
                 midiInputEventAdapter.add((String)msg.obj);
-                if (midiInputEventListView.getChildAt(1) != null) {
+
+                if (midiInputEventListView.getChildAt(22) != null) {
                     View v;
                     TextView tv;
                     //TODO
@@ -142,25 +144,32 @@ public class CentralActivity extends Activity {
                     //  throws, and then color the items with that
                     //the setBackgroundCOlor commands below work if they are given correct indexes,
                     //  the only problem is that the indexes keep changing every time a new item is added
-                    for (int i = 0; i < midiInputEventListView.getChildCount(); i++) {
-                        v = midiInputEventListView.getAdapter().getView(i, null, null);
-                        tv = (TextView) v.findViewById(i);
-                        String msgString = tv.getText().toString();
-
-
-                        Toast.makeText(getBaseContext(), msgString, Toast.LENGTH_LONG).show();
+                    for (int i = 0; i < Math.min(midiInputEventListView.getCount()-1, 23); i++) {
+                        //v = midiInputEventListView.getAdapter().getView(i, null, null);
+                        //tv = (TextView) v.findViewById(i);
+                        //String msgString =  midiInputEventListView.getChildAt(1).toString();
+                        Log.d("TAG", "i: "+i);
+                        int our_index = midiInputEventListView.getCount() - (i+1) ;
+                        Log.d("TAG", "our_index: "+our_index);
+                        Log.d("TAG", "midiInputEventListView.getCount(): "+midiInputEventListView.getCount());
+                        Log.d("TAG", "midiInputEventListView.getChildCount(): "+midiInputEventListView.getChildCount());
+                        //Toast.makeText(getBaseContext(), our_index, Toast.LENGTH_LONG).show();
+                        String msgString = (String) (midiInputEventListView.getItemAtPosition(our_index));
+                        Log.d("TAG", "msgString: "+msgString);
+                        //Toast.makeText(getBaseContext(), msgString, Toast.LENGTH_LONG).show();
                         if (msgString.contains("Gry")) {
-                            midiInputEventListView.getChildAt(i).setBackgroundColor(
+                            midiInputEventListView.getChildAt(22-i).setBackgroundColor(
                                     Color.parseColor("#0000FF"));
                         } else if (msgString.contains("Trq")) {
-                            midiInputEventListView.getChildAt(i).setBackgroundColor(
+                            midiInputEventListView.getChildAt(22-i).setBackgroundColor(
                                     Color.parseColor("#00FF00"));
                         } else {
-                            midiInputEventListView.getChildAt(i).setBackgroundColor(
+                            midiInputEventListView.getChildAt(22-i).setBackgroundColor(
                                     Color.parseColor("#FF0000"));
                         }
                     }
                 }
+
             }
             counterTextView.setText(String.valueOf(catchCounter));
             // message handled successfully
