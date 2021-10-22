@@ -15,10 +15,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46daee7a-1434-47f5-bd57-ed6a530a1ba0" name="Default Changelist" comment="in the midst of setting colors in catch list">
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/R.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/dex/debug/mergeDexDebug/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/dex/debug/mergeDexDebug/classes.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/javac/debug/classes/jp/kshoji/blemidi/sample/CentralActivity$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/javac/debug/classes/jp/kshoji/blemidi/sample/CentralActivity$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/javac/debug/classes/jp/kshoji/blemidi/sample/CentralActivity$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/javac/debug/classes/jp/kshoji/blemidi/sample/CentralActivity$10.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/javac/debug/classes/jp/kshoji/blemidi/sample/CentralActivity$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/javac/debug/classes/jp/kshoji/blemidi/sample/CentralActivity$11.class" afterDir="false" />
@@ -35,12 +44,16 @@
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/javac/debug/classes/jp/kshoji/blemidi/sample/CentralActivity$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/javac/debug/classes/jp/kshoji/blemidi/sample/CentralActivity$8.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/javac/debug/classes/jp/kshoji/blemidi/sample/CentralActivity$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/javac/debug/classes/jp/kshoji/blemidi/sample/CentralActivity$9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/javac/debug/classes/jp/kshoji/blemidi/sample/CentralActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/javac/debug/classes/jp/kshoji/blemidi/sample/CentralActivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/build/intermediates/processed_res/debug/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/processed_res/debug/out/resources-debug.ap_" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$1.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$10.dex" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$10.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$11.dex" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$11.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$12.dex" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$12.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$13.dex" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$13.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$14.dex" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$14.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$15.dex" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$15.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$2.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$3.dex" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$3.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$4.dex" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$4.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$5.dex" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$5.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$6.dex" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$6.dex" afterDir="false" />
@@ -48,6 +61,9 @@
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$8.dex" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$8.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$9.dex" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity$9.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/project_dex_archive/debug/out/jp/kshoji/blemidi/sample/CentralActivity.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/build/intermediates/res/merged/debug/layout_activity_main.xml.flat" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/res/merged/debug/layout_activity_main.xml.flat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/build/intermediates/stable_resource_ids_file/debug/stableIds.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/intermediates/stable_resource_ids_file/debug/stableIds.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/build/outputs/apk/debug/sample-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/sample/build/outputs/apk/debug/sample-debug.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/src/main/java/jp/kshoji/blemidi/sample/CentralActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/sample/src/main/java/jp/kshoji/blemidi/sample/CentralActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -255,7 +271,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634853290924</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="background color of catch list works shittily">
+      <created>1634905893200</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1634905893200</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -278,6 +301,7 @@
     <MESSAGE value="design cleaned up, todo" />
     <MESSAGE value="dark color scheme, todo" />
     <MESSAGE value="in the midst of setting colors in catch list" />
-    <option name="LAST_COMMIT_MESSAGE" value="in the midst of setting colors in catch list" />
+    <MESSAGE value="background color of catch list works shittily" />
+    <option name="LAST_COMMIT_MESSAGE" value="background color of catch list works shittily" />
   </component>
 </project>

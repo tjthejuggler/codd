@@ -30,7 +30,9 @@ import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Timer;
@@ -61,6 +63,8 @@ public class CentralActivity extends Activity {
 
     int catchCounter;
     String previousName;
+    Hashtable<String,Long> lastCaughtTimes = new Hashtable<String,Long>();
+
     TextView counterTextView;
     ListView midiInputEventListView;
 
@@ -148,14 +152,14 @@ public class CentralActivity extends Activity {
                         //v = midiInputEventListView.getAdapter().getView(i, null, null);
                         //tv = (TextView) v.findViewById(i);
                         //String msgString =  midiInputEventListView.getChildAt(1).toString();
-                        Log.d("TAG", "i: "+i);
+                        //Log.d("TAG", "i: "+i);
                         int our_index = midiInputEventListView.getCount() - (i+1) ;
-                        Log.d("TAG", "our_index: "+our_index);
-                        Log.d("TAG", "midiInputEventListView.getCount(): "+midiInputEventListView.getCount());
-                        Log.d("TAG", "midiInputEventListView.getChildCount(): "+midiInputEventListView.getChildCount());
+                        //Log.d("TAG", "our_index: "+our_index);
+                        //Log.d("TAG", "midiInputEventListView.getCount(): "+midiInputEventListView.getCount());
+                        //Log.d("TAG", "midiInputEventListView.getChildCount(): "+midiInputEventListView.getChildCount());
                         //Toast.makeText(getBaseContext(), our_index, Toast.LENGTH_LONG).show();
                         String msgString = (String) (midiInputEventListView.getItemAtPosition(our_index));
-                        Log.d("TAG", "msgString: "+msgString);
+                        //Log.d("TAG", "msgString: "+msgString);
                         //Toast.makeText(getBaseContext(), msgString, Toast.LENGTH_LONG).show();
                         if (msgString.contains("Gry")) {
                             midiInputEventListView.getChildAt(22-i).setBackgroundColor(
@@ -274,6 +278,27 @@ public class CentralActivity extends Activity {
                 }
             }
         }
+        public Boolean throwIsValid(String ballName){
+            Boolean isValid = true;
+            Log.d("TAG", "throwIsValid: "+lastCaughtTimes);
+            Log.d("TAG", "ballName: "+ballName);
+            Log.d("TAG", "previousName1: "+previousName);
+            if (ballName.equals(previousName)){
+                Log.d("TAG", "previousName2: "+previousName);
+                Date date = new Date();
+                if (lastCaughtTimes.containsKey(ballName)){
+                    Log.d("TAG", "ContainsKey: ");
+                    if (date.getTime() - lastCaughtTimes.get(ballName) < 300){
+                        Log.d("TAG", "date.getTime(): "+date.getTime());
+                        Log.d("TAG", "lastCaughtTimes.get(ballName): "+lastCaughtTimes.get(ballName));
+                        isValid = false;
+                    }
+                }
+                lastCaughtTimes.put(ballName, date.getTime());
+            }
+
+            return isValid;
+        }
 
         @Override
         public void onMidiNoteOn(@NonNull MidiInputDevice sender, int channel, int note, int velocity) {
@@ -281,7 +306,7 @@ public class CentralActivity extends Activity {
             //if the same ball is caught twice within a small amount of time, then ignore the
             //  second time it was caught
 
-            if (!sender.getDeviceName().equals(previousName)) {
+            if (throwIsValid(sender.getDeviceName())) {
                 catchCounter++;
                 previousName = sender.getDeviceName();
                 midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "ball: " + sender.getDeviceName() +"Pball: " + previousName + " ch: " + channel + ", nt: " + note + ", velocity: " + velocity));

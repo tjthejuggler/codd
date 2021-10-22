@@ -1,4 +1,4 @@
-#Thu Oct 21 23:43:53 CEST 2021
+#Fri Oct 22 21:05:09 CEST 2021
 base.0=/home/tim/AndroidStudioProjects/codd/sample/build/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
