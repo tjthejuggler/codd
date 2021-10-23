@@ -42,6 +42,14 @@ LICENSE
 TODO
 ====
 
+siteswap:
+  keep a history of the order in which balls were caught
+  once we get to about 20 catches
+    convert every catch to a number based on how far away it is from the next time it is caught
+    take this sequence of numbers and get the smallest chunk
+    convert this chunk into its highest form
+    keep track of this siteswap and once we have had the same siteswap for X number of times, show it in the app
+
 dark color scheme
 design desired layout
 scrollable run history

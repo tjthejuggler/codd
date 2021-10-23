@@ -30,6 +30,7 @@ import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -60,12 +61,14 @@ public class CentralActivity extends Activity {
     BleMidiCentralProvider bleMidiCentralProvider;
 
     MenuItem toggleScanMenu;
-
+    ArrayList<String> catchHistory = new ArrayList<String>();
+    ArrayList<String> previousSiteswaps = new ArrayList<String>();
     int catchCounter;
     String previousName;
     Hashtable<String,Long> lastCaughtTimes = new Hashtable<String,Long>();
 
     TextView counterTextView;
+    TextView siteswapTextView;
     ListView midiInputEventListView;
 
     boolean isScanning = false;
@@ -128,6 +131,61 @@ public class CentralActivity extends Activity {
         }
     }
 
+    public ArrayList getFullSiteswap(ArrayList reverseCatchHistory){
+        ArrayList<Integer> fullSiteswap = new ArrayList<Integer>();
+        for (int catchNum = 0; catchNum < 15; catchNum++){
+            for (int nextCatch = catchNum+1; nextCatch < 16; nextCatch++){
+                if (reverseCatchHistory.get(catchNum).equals(reverseCatchHistory.get(nextCatch))){
+                    fullSiteswap.add(nextCatch-catchNum);
+                    break;
+                }
+            }
+        }
+        return fullSiteswap;
+    }
+
+    public ArrayList getBaseSiteswap(ArrayList fullSiteswap){
+        ArrayList<Integer> baseSiteswap = new ArrayList<Integer>();
+
+        return baseSiteswap;
+    }
+
+    public int getFormatttedSiteswap(ArrayList baseSiteswap){
+        int formattedSiteswap = 0;
+
+        return formattedSiteswap;
+    }
+
+    public boolean checkIfAllEqual(ArrayList<String> list) {
+        for (String s : list) {
+            if (!s.equals(list.get(0)))
+                return false;
+        }
+        return true;
+    }
+
+    public String getDetectedSiteswap(){
+        String detectedSiteswap = "????";
+        ArrayList<Integer> fullSiteswap = new ArrayList<Integer>();
+        ArrayList<Integer> baseSiteswap = new ArrayList<Integer>();
+        int formattedSiteswap;
+        ArrayList<String> reverseCatchHistory = new ArrayList<String>();
+        reverseCatchHistory = catchHistory;
+        Collections.reverse(reverseCatchHistory);
+        if (reverseCatchHistory.size() > 15){
+            fullSiteswap = getFullSiteswap(reverseCatchHistory);
+            baseSiteswap = getBaseSiteswap(fullSiteswap);
+            formattedSiteswap = getFormatttedSiteswap(baseSiteswap);
+            previousSiteswaps.add(Integer.toString(formattedSiteswap));
+            if (checkIfAllEqual(previousSiteswaps)){
+                detectedSiteswap = Integer.toString(formattedSiteswap);
+            }
+        }
+
+
+        return detectedSiteswap;
+    }
+
     // User interface
     final Handler midiInputEventHandler = new Handler(new Handler.Callback() {
         @Override
@@ -141,17 +199,8 @@ public class CentralActivity extends Activity {
                 midiInputEventAdapter.add((String)msg.obj);
 
                 if (midiInputEventListView.getChildAt(22) != null) {
-                    View v;
-                    TextView tv;
-                    //TODO
-                    //instead of iterating the listview, we should keep a list of all the
-                    //  throws, and then color the items with that
-                    //the setBackgroundCOlor commands below work if they are given correct indexes,
-                    //  the only problem is that the indexes keep changing every time a new item is added
-                    for (int i = 0; i < Math.min(midiInputEventListView.getCount()-1, 23); i++) {
-                        //v = midiInputEventListView.getAdapter().getView(i, null, null);
-                        //tv = (TextView) v.findViewById(i);
-                        //String msgString =  midiInputEventListView.getChildAt(1).toString();
+                    int childCount = midiInputEventListView.getChildCount();
+                    for (int i = 0; i < Math.min(midiInputEventListView.getCount()-1, childCount); i++) {
                         //Log.d("TAG", "i: "+i);
                         int our_index = midiInputEventListView.getCount() - (i+1) ;
                         //Log.d("TAG", "our_index: "+our_index);
@@ -162,13 +211,13 @@ public class CentralActivity extends Activity {
                         //Log.d("TAG", "msgString: "+msgString);
                         //Toast.makeText(getBaseContext(), msgString, Toast.LENGTH_LONG).show();
                         if (msgString.contains("Gry")) {
-                            midiInputEventListView.getChildAt(22-i).setBackgroundColor(
+                            midiInputEventListView.getChildAt((childCount-1)-i).setBackgroundColor(
                                     Color.parseColor("#0000FF"));
                         } else if (msgString.contains("Trq")) {
-                            midiInputEventListView.getChildAt(22-i).setBackgroundColor(
+                            midiInputEventListView.getChildAt((childCount-1)-i).setBackgroundColor(
                                     Color.parseColor("#00FF00"));
                         } else {
-                            midiInputEventListView.getChildAt(22-i).setBackgroundColor(
+                            midiInputEventListView.getChildAt((childCount-1)-i).setBackgroundColor(
                                     Color.parseColor("#FF0000"));
                         }
                     }
@@ -176,6 +225,7 @@ public class CentralActivity extends Activity {
 
             }
             counterTextView.setText(String.valueOf(catchCounter));
+            siteswapTextView.setText(getDetectedSiteswap());
             // message handled successfully
             return true;
         }
@@ -283,19 +333,19 @@ public class CentralActivity extends Activity {
             Log.d("TAG", "throwIsValid: "+lastCaughtTimes);
             Log.d("TAG", "ballName: "+ballName);
             Log.d("TAG", "previousName1: "+previousName);
-            if (ballName.equals(previousName)){
-                Log.d("TAG", "previousName2: "+previousName);
+            //if (ballName.equals(previousName)){
+                //Log.d("TAG", "previousName2: "+previousName);
                 Date date = new Date();
                 if (lastCaughtTimes.containsKey(ballName)){
                     Log.d("TAG", "ContainsKey: ");
-                    if (date.getTime() - lastCaughtTimes.get(ballName) < 300){
+                    if (date.getTime() - lastCaughtTimes.get(ballName) < 200){
                         Log.d("TAG", "date.getTime(): "+date.getTime());
                         Log.d("TAG", "lastCaughtTimes.get(ballName): "+lastCaughtTimes.get(ballName));
                         isValid = false;
                     }
                 }
                 lastCaughtTimes.put(ballName, date.getTime());
-            }
+            //}
 
             return isValid;
         }
@@ -305,12 +355,13 @@ public class CentralActivity extends Activity {
 
             //if the same ball is caught twice within a small amount of time, then ignore the
             //  second time it was caught
-
-            if (throwIsValid(sender.getDeviceName())) {
-                catchCounter++;
-                previousName = sender.getDeviceName();
-                midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "ball: " + sender.getDeviceName() +"Pball: " + previousName + " ch: " + channel + ", nt: " + note + ", velocity: " + velocity));
-
+            String ballName = sender.getDeviceName();
+            if (throwIsValid(ballName)) {
+                catchCounter++; //TODO maybe remove this and just use catchHistory
+                previousName = ballName; //TODO maybe remove this and just use catchHistory
+                Date date = new Date();
+                catchHistory.add(ballName);
+                midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "ball: " + sender.getDeviceName() +"t: " + date.getTime() +  ", nt: " + note + ", velocity: " + velocity));
                 if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                     getBleMidiOutputDeviceFromSpinner().sendMidiNoteOn(channel, note, velocity);
                     midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "NoteOn from: " + sender.getDeviceName() + " channel: " + channel + ", note: " + note + ", velocity: " + velocity));
@@ -512,7 +563,7 @@ public class CentralActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         counterTextView = (TextView) findViewById(R.id.textView2);
-
+        siteswapTextView = (TextView) findViewById(R.id.siteswaptv);
         //counterTextView.setText("0");
 
         midiInputEventListView = (ListView) findViewById(R.id.catchHistory);

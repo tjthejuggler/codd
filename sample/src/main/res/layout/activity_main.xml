@@ -82,6 +82,16 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="100dp" />
 
+    <TextView
+        android:id="@+id/siteswaptv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="xxxx"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFF"
+        android:textSize="60dp" />
+
     <ListView
         android:id="@+id/runHistory"
         android:layout_width="match_parent"
