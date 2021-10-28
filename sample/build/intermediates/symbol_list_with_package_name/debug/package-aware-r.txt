@@ -6,11 +6,16 @@ drawable ic_launcher
 id action_toggle_advertise
 id action_toggle_scan
 id catchHistory
+id consistencytv
 id deviceNameSpinner
 id disconnectButton
 id midiEventDescriptionTextView
 id resetButton
 id runHistory
+id siteswaptv
+id siteswaptv3
+id siteswaptv4
+id siteswaptv5
 id textView2
 layout activity_main
 layout midi_event

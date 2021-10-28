@@ -65,12 +65,11 @@
     <ListView
         android:id="@+id/catchHistory"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="412dp"
         android:layout_weight="1"
         android:stackFromBottom="true"
-        android:transcriptMode="alwaysScroll"
-        android:textColor="@android:color/white">
-    </ListView>
+        android:textColor="@android:color/white"
+        android:transcriptMode="alwaysScroll"></ListView>
 
     <TextView
         android:id="@+id/textView2"
@@ -84,9 +83,49 @@
 
     <TextView
         android:id="@+id/siteswaptv"
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:text="xxxx"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFF"
+        android:textSize="60dp" />
+
+    <TextView
+        android:id="@+id/consistencytv"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="xxxx"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFF"
+        android:textSize="60dp" />
+
+    <TextView
+        android:id="@+id/siteswaptv3"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="xxxx"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFF"
+        android:textSize="60dp" />
+
+    <TextView
+        android:id="@+id/siteswaptv4"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="xxxx"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFF"
+        android:textSize="60dp" />
+
+    <TextView
+        android:id="@+id/siteswaptv5"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
         android:text="xxxx"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#FFF"

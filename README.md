@@ -41,6 +41,24 @@ LICENSE
 
 TODO
 ====
+data shower
+  remove ODD from ballname
+  change ball to b
+  remove first digits from time
+  show time since this ball last caught
+  show average time since this ball last caught
+
+make a time consistency rating
+  every time a ball is caught, calculate the time since it was last caught, 
+  compare that time to the average time it takes to catch it and make a score for this
+  combine the scores off all balls
+make a intensity consistency rating
+make an overall consistency rating
+
+make a 2d array that holds the info from every catch, including the time
+on every catch look back at the last few catches and if there are any that are identical or very similar, remove them from the history
+use this 2d array for catches
+make sure to remove them from the listview
 
 siteswap:
   keep a history of the order in which balls were caught

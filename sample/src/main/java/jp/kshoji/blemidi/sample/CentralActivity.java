@@ -1,5 +1,7 @@
 package jp.kshoji.blemidi.sample;
 
+import static jp.kshoji.blemidi.util.Constants.TAG;
+
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -35,6 +37,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -61,6 +65,7 @@ public class CentralActivity extends Activity {
     BleMidiCentralProvider bleMidiCentralProvider;
 
     MenuItem toggleScanMenu;
+    ArrayList<ArrayList<Object> > completeCatchHistory = new ArrayList<>();
     ArrayList<String> catchHistory = new ArrayList<String>();
     ArrayList<String> previousSiteswaps = new ArrayList<String>();
     int catchCounter;
@@ -69,6 +74,7 @@ public class CentralActivity extends Activity {
 
     TextView counterTextView;
     TextView siteswapTextView;
+    TextView consistencyTextView;
     ListView midiInputEventListView;
 
     boolean isScanning = false;
@@ -131,32 +137,51 @@ public class CentralActivity extends Activity {
         }
     }
 
-    public ArrayList getFullSiteswap(ArrayList reverseCatchHistory){
-        ArrayList<Integer> fullSiteswap = new ArrayList<Integer>();
-        for (int catchNum = 0; catchNum < 15; catchNum++){
-            for (int nextCatch = catchNum+1; nextCatch < 16; nextCatch++){
+    public String getFullSiteswap(ArrayList reverseCatchHistory){
+        String fullSiteswap = "";
+
+        Log.d("TAG", "reverseCatchHistory " +reverseCatchHistory.subList(0, 10));
+        for (int catchNum = 0; catchNum < 9; catchNum++){
+            for (int nextCatch = catchNum+1; nextCatch < 10; nextCatch++){
+                Log.d("TAG", "reverseCatchHistory.get(catchNum): " +reverseCatchHistory.get(catchNum));
+                Log.d("TAG", "reverseCatchHistory.get(nextCatch): " +reverseCatchHistory.get(nextCatch));
                 if (reverseCatchHistory.get(catchNum).equals(reverseCatchHistory.get(nextCatch))){
-                    fullSiteswap.add(nextCatch-catchNum);
+                    fullSiteswap = fullSiteswap + (nextCatch-catchNum);
+                    Log.d("TAG", "fullSiteswap: " +fullSiteswap);
                     break;
                 }
+
             }
         }
         return fullSiteswap;
     }
 
-    public ArrayList getBaseSiteswap(ArrayList fullSiteswap){
-        ArrayList<Integer> baseSiteswap = new ArrayList<Integer>();
-
-        return baseSiteswap;
+    static String getBaseSiteswap(String input){
+        return input.replaceAll("^(.+?)\\1*$","$1");
     }
 
-    public int getFormatttedSiteswap(ArrayList baseSiteswap){
-        int formattedSiteswap = 0;
+//    public String getBaseSiteswap(String fullSiteswap){
+//        String baseSiteswap = "";
+//        for (int period = 1; period > fullSiteswap.length()-1; period++){
+//
+//        }
+//        return baseSiteswap;
+//    }
 
-        return formattedSiteswap;
+    public long getFormatttedSiteswap(String baseSiteswap){
+        long largestNumber = Long.parseLong(baseSiteswap);
+        for (int i = 0; i<baseSiteswap.length();i++){
+            String begString = baseSiteswap.substring(0, i);
+            String endString = baseSiteswap.substring(i, baseSiteswap.length());
+            long possibleLargest = Long.parseLong(endString + begString);
+            if (possibleLargest > largestNumber){
+                largestNumber = possibleLargest;
+            }
+        }
+        return largestNumber;
     }
 
-    public boolean checkIfAllEqual(ArrayList<String> list) {
+    public boolean checkIfAllEqual(List<String> list) {
         for (String s : list) {
             if (!s.equals(list.get(0)))
                 return false;
@@ -166,24 +191,43 @@ public class CentralActivity extends Activity {
 
     public String getDetectedSiteswap(){
         String detectedSiteswap = "????";
-        ArrayList<Integer> fullSiteswap = new ArrayList<Integer>();
-        ArrayList<Integer> baseSiteswap = new ArrayList<Integer>();
-        int formattedSiteswap;
+        long formattedSiteswap;
         ArrayList<String> reverseCatchHistory = new ArrayList<String>();
-        reverseCatchHistory = catchHistory;
+        ArrayList<Object> catchHistoryBallNames = new ArrayList<>();
+        for (ArrayList<Object> s : completeCatchHistory)
+            catchHistoryBallNames.add(s.get(0));
+        ArrayList<String> strList = (ArrayList<String>)(ArrayList<?>)(catchHistoryBallNames);
+        reverseCatchHistory.addAll(strList);
+        //Log.d("TAG", "catchHistory: " +catchHistory);
         Collections.reverse(reverseCatchHistory);
+        //Log.d("TAG", "catchHistory: " +catchHistory);
+        //Log.d("TAG", "reverseCatchHistory: " +reverseCatchHistory);
         if (reverseCatchHistory.size() > 15){
-            fullSiteswap = getFullSiteswap(reverseCatchHistory);
-            baseSiteswap = getBaseSiteswap(fullSiteswap);
+            String fullSiteswap = getFullSiteswap(reverseCatchHistory);
+            Log.d("TAG", "fullSiteswap: " +fullSiteswap);
+            String baseSiteswap = getBaseSiteswap(fullSiteswap);
+            Log.d("TAG", "baseSiteswap: " +baseSiteswap);
             formattedSiteswap = getFormatttedSiteswap(baseSiteswap);
-            previousSiteswaps.add(Integer.toString(formattedSiteswap));
-            if (checkIfAllEqual(previousSiteswaps)){
-                detectedSiteswap = Integer.toString(formattedSiteswap);
+            Log.d("TAG", "formattedSiteswap: " +formattedSiteswap);
+            previousSiteswaps.add(Long.toString(formattedSiteswap));
+            if (previousSiteswaps.size() > 10) {
+                Log.d("TAG", "previousSiteswaps: " +previousSiteswaps.subList(previousSiteswaps.size() - 10, previousSiteswaps.size()));
+
+                if (checkIfAllEqual(previousSiteswaps.subList(previousSiteswaps.size() - 10, previousSiteswaps.size()))) {
+                    detectedSiteswap = Long.toString(formattedSiteswap);
+                    Log.d("TAG", "detectedSiteswap: " + detectedSiteswap);
+                }
             }
         }
-
-
         return detectedSiteswap;
+    }
+
+    public String getConsistencyScore(){
+        String consistencyScore = "????";
+
+
+
+        return consistencyScore;
     }
 
     // User interface
@@ -197,10 +241,10 @@ public class CentralActivity extends Activity {
                 //String ballName = msgString.substring(0, msgString.indexOf("Pball:"));
 
                 midiInputEventAdapter.add((String)msg.obj);
+                int childCount = midiInputEventListView.getChildCount();
+                if (midiInputEventListView.getChildAt(childCount-1) != null) {
 
-                if (midiInputEventListView.getChildAt(22) != null) {
-                    int childCount = midiInputEventListView.getChildCount();
-                    for (int i = 0; i < Math.min(midiInputEventListView.getCount()-1, childCount); i++) {
+                    for (int i = 0; i < Math.min(childCount-1, childCount); i++) {
                         //Log.d("TAG", "i: "+i);
                         int our_index = midiInputEventListView.getCount() - (i+1) ;
                         //Log.d("TAG", "our_index: "+our_index);
@@ -216,7 +260,7 @@ public class CentralActivity extends Activity {
                         } else if (msgString.contains("Trq")) {
                             midiInputEventListView.getChildAt((childCount-1)-i).setBackgroundColor(
                                     Color.parseColor("#00FF00"));
-                        } else {
+                        } else if (msgString.contains("Pnc")) {
                             midiInputEventListView.getChildAt((childCount-1)-i).setBackgroundColor(
                                     Color.parseColor("#FF0000"));
                         }
@@ -226,6 +270,7 @@ public class CentralActivity extends Activity {
             }
             counterTextView.setText(String.valueOf(catchCounter));
             siteswapTextView.setText(getDetectedSiteswap());
+            consistencyTextView.setText(getConsistencyScore());
             // message handled successfully
             return true;
         }
@@ -338,7 +383,7 @@ public class CentralActivity extends Activity {
                 Date date = new Date();
                 if (lastCaughtTimes.containsKey(ballName)){
                     Log.d("TAG", "ContainsKey: ");
-                    if (date.getTime() - lastCaughtTimes.get(ballName) < 200){
+                    if (date.getTime() - lastCaughtTimes.get(ballName) < 250){
                         Log.d("TAG", "date.getTime(): "+date.getTime());
                         Log.d("TAG", "lastCaughtTimes.get(ballName): "+lastCaughtTimes.get(ballName));
                         isValid = false;
@@ -361,6 +406,13 @@ public class CentralActivity extends Activity {
                 previousName = ballName; //TODO maybe remove this and just use catchHistory
                 Date date = new Date();
                 catchHistory.add(ballName);
+                ArrayList<Object> this_catch_data = new ArrayList<>();
+                this_catch_data.add(ballName);
+                this_catch_data.add(date.getTime());
+                this_catch_data.add(velocity);
+                completeCatchHistory.add(this_catch_data);
+                //Log.d(TAG, "addToCatchHistory: "+ballName);
+                //Log.d(TAG, "catchHistoryXXX: "+catchHistory);
                 midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "ball: " + sender.getDeviceName() +"t: " + date.getTime() +  ", nt: " + note + ", velocity: " + velocity));
                 if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                     getBleMidiOutputDeviceFromSpinner().sendMidiNoteOn(channel, note, velocity);
@@ -564,6 +616,7 @@ public class CentralActivity extends Activity {
 
         counterTextView = (TextView) findViewById(R.id.textView2);
         siteswapTextView = (TextView) findViewById(R.id.siteswaptv);
+        consistencyTextView = (TextView) findViewById(R.id.consistencytv);
         //counterTextView.setText("0");
 
         midiInputEventListView = (ListView) findViewById(R.id.catchHistory);
