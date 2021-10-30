@@ -32,11 +32,13 @@ import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -68,6 +70,9 @@ public class CentralActivity extends Activity {
     ArrayList<ArrayList<Object> > completeCatchHistory = new ArrayList<>();
     ArrayList<String> catchHistory = new ArrayList<String>();
     ArrayList<String> previousSiteswaps = new ArrayList<String>();
+
+    LinkedList<Double> consistency_score_history = new LinkedList<Double>();
+
     int catchCounter;
     String previousName;
     Hashtable<String,Long> lastCaughtTimes = new Hashtable<String,Long>();
@@ -222,6 +227,8 @@ public class CentralActivity extends Activity {
         return detectedSiteswap;
     }
 
+
+
     public String getConsistencyScore(){
         String consistencyScore = "????";
 
@@ -269,7 +276,7 @@ public class CentralActivity extends Activity {
 
             }
             counterTextView.setText(String.valueOf(catchCounter));
-            siteswapTextView.setText(getDetectedSiteswap());
+            //siteswapTextView.setText(getDetectedSiteswap());
             consistencyTextView.setText(getConsistencyScore());
             // message handled successfully
             return true;
@@ -343,6 +350,8 @@ public class CentralActivity extends Activity {
         return null;
     }
 
+
+
     OnMidiInputEventListener onMidiInputEventListener = new OnMidiInputEventListener() {
         @Override
         public void onMidiSystemExclusive(@NonNull MidiInputDevice sender, @NonNull byte[] systemExclusive) {
@@ -395,8 +404,61 @@ public class CentralActivity extends Activity {
             return isValid;
         }
 
+        public long getTimeSinceLastCatch(String ballName, long date){
+            long timeSinceLastCatch = 0;
+            ArrayList<ArrayList<Object> > copied_list = new ArrayList<>();
+            copied_list.addAll(completeCatchHistory);
+            for(ArrayList<Object> row : copied_list) {
+                if (row.get(0).equals(ballName)){
+                    timeSinceLastCatch = date - (Long)row.get(1);
+                    //Log.d(TAG, "timeSinceLastCatch: "+timeSinceLastCatch);
+                }
+            }
+            return timeSinceLastCatch;
+        }
+        long calculate_list_average(ArrayList<Long> given_list){
+            long average = 0;
+            long total = 0;
+            for(int i = 0; i<given_list.size(); i++)
+                total = total+given_list.get(i);
+            average = total / given_list.size();
+            return average;
+        }
+
+        double calculate_linkedlist_average(LinkedList<Double> given_list){
+            double average = 0;
+            if (given_list.size()>0) {
+                double total = 0;
+                for (int i = 0; i < given_list.size(); i++)
+                    total = total + given_list.get(i);
+                average = total / given_list.size();
+            }
+            return average;
+        }
+
+        long getAverageTimeSinceLastCatch(String ballName){
+            long average = 0;
+            ArrayList<Long> all_times = new ArrayList<>();
+            ArrayList<ArrayList<Object> > copied_list = new ArrayList<>();
+            copied_list.addAll(completeCatchHistory);
+            for(ArrayList<Object> row : copied_list) {
+                if (row.get(0).equals(ballName)){
+                    all_times.add((Long)row.get(2));
+                }
+            }
+            average = calculate_list_average(all_times);
+            return average;
+        }
+
+
+
+
+
+
         @Override
         public void onMidiNoteOn(@NonNull MidiInputDevice sender, int channel, int note, int velocity) {
+
+
 
             //if the same ball is caught twice within a small amount of time, then ignore the
             //  second time it was caught
@@ -405,15 +467,32 @@ public class CentralActivity extends Activity {
                 catchCounter++; //TODO maybe remove this and just use catchHistory
                 previousName = ballName; //TODO maybe remove this and just use catchHistory
                 Date date = new Date();
+                long timeSinceLastCatch = getTimeSinceLastCatch(ballName, date.getTime());
                 catchHistory.add(ballName);
                 ArrayList<Object> this_catch_data = new ArrayList<>();
                 this_catch_data.add(ballName);
                 this_catch_data.add(date.getTime());
+                this_catch_data.add(timeSinceLastCatch);
                 this_catch_data.add(velocity);
                 completeCatchHistory.add(this_catch_data);
                 //Log.d(TAG, "addToCatchHistory: "+ballName);
                 //Log.d(TAG, "catchHistoryXXX: "+catchHistory);
-                midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "ball: " + sender.getDeviceName() +"t: " + date.getTime() +  ", nt: " + note + ", velocity: " + velocity));
+                String shortTimeString = String.valueOf(date.getTime());
+                shortTimeString = shortTimeString.substring(5, shortTimeString.length());
+
+                String shortBallName = ballName.replace("ODD","");
+                long average_time_since_last_catch = getAverageTimeSinceLastCatch(ballName);
+                if (consistency_score_history.size() > 10){
+                    consistency_score_history.removeFirst();
+                }
+                if (average_time_since_last_catch > 0 ) {
+                    double score = ((double)timeSinceLastCatch/average_time_since_last_catch)*100;
+                    consistency_score_history.add(score);
+                }
+                Log.d(TAG, "consistency_score_history: "+consistency_score_history);
+
+                double consistency_score = calculate_linkedlist_average(consistency_score_history);
+                midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, shortBallName + shortTimeString +" "+ timeSinceLastCatch + " " +average_time_since_last_catch+ " "+ consistency_score + ", n: " + note + ", v: " + velocity));
                 if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                     getBleMidiOutputDeviceFromSpinner().sendMidiNoteOn(channel, note, velocity);
                     midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "NoteOn from: " + sender.getDeviceName() + " channel: " + channel + ", note: " + note + ", velocity: " + velocity));

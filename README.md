@@ -41,12 +41,11 @@ LICENSE
 
 TODO
 ====
-data shower
-  remove ODD from ballname
-  change ball to b
-  remove first digits from time
-  show time since this ball last caught
-  show average time since this ball last caught
+divide this_time_difference / average_for_this_ball = this catches_score
+combine x last catches to get the current consistency scores
+
+consistency considerations
+  should we try to stay as close to the average timing for each ball, or should it be based on first n catches
 
 make a time consistency rating
   every time a ball is caught, calculate the time since it was last caught, 
