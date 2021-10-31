@@ -27,12 +27,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
@@ -40,7 +38,6 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -75,11 +72,16 @@ public class CentralActivity extends Activity {
 
     int catchCounter;
     String previousName;
+    double consistency_score = 0.000;
+
     Hashtable<String,Long> lastCaughtTimes = new Hashtable<String,Long>();
 
     TextView counterTextView;
     TextView siteswapTextView;
     TextView consistencyTextView;
+    TextView dataTextView2;
+    TextView dataTextView3;
+    TextView dataTextView4;
     ListView midiInputEventListView;
 
     boolean isScanning = false;
@@ -276,8 +278,10 @@ public class CentralActivity extends Activity {
 
             }
             counterTextView.setText(String.valueOf(catchCounter));
+            dataTextView2.setText(String.valueOf(completeCatchHistory.size()));
             //siteswapTextView.setText(getDetectedSiteswap());
-            consistencyTextView.setText(getConsistencyScore());
+            consistencyTextView.setText(String.format("%.3f", consistency_score));
+            //consistencyTextView.setText(getConsistencyScore());
             // message handled successfully
             return true;
         }
@@ -382,6 +386,7 @@ public class CentralActivity extends Activity {
                 }
             }
         }
+
         public Boolean throwIsValid(String ballName){
             Boolean isValid = true;
             Log.d("TAG", "throwIsValid: "+lastCaughtTimes);
@@ -450,18 +455,22 @@ public class CentralActivity extends Activity {
             return average;
         }
 
-
+        public void fill_completeCatchHistory(String ballName, Date date, long timeSinceLastCatch, int velocity ){
+            ArrayList<Object> this_catch_data = new ArrayList<>();
+            this_catch_data.add(ballName);
+            this_catch_data.add(date.getTime());
+            this_catch_data.add(timeSinceLastCatch);
+            this_catch_data.add(velocity);
+            completeCatchHistory.add(this_catch_data);
+            //Log.d(TAG, "addToCatchHistory: "+ballName);
+            //Log.d(TAG, "catchHistoryXXX: "+catchHistory);
+        }
 
 
 
 
         @Override
         public void onMidiNoteOn(@NonNull MidiInputDevice sender, int channel, int note, int velocity) {
-
-
-
-            //if the same ball is caught twice within a small amount of time, then ignore the
-            //  second time it was caught
             String ballName = sender.getDeviceName();
             if (throwIsValid(ballName)) {
                 catchCounter++; //TODO maybe remove this and just use catchHistory
@@ -469,14 +478,8 @@ public class CentralActivity extends Activity {
                 Date date = new Date();
                 long timeSinceLastCatch = getTimeSinceLastCatch(ballName, date.getTime());
                 catchHistory.add(ballName);
-                ArrayList<Object> this_catch_data = new ArrayList<>();
-                this_catch_data.add(ballName);
-                this_catch_data.add(date.getTime());
-                this_catch_data.add(timeSinceLastCatch);
-                this_catch_data.add(velocity);
-                completeCatchHistory.add(this_catch_data);
-                //Log.d(TAG, "addToCatchHistory: "+ballName);
-                //Log.d(TAG, "catchHistoryXXX: "+catchHistory);
+                fill_completeCatchHistory(ballName, date, timeSinceLastCatch, velocity);
+
                 String shortTimeString = String.valueOf(date.getTime());
                 shortTimeString = shortTimeString.substring(5, shortTimeString.length());
 
@@ -491,7 +494,9 @@ public class CentralActivity extends Activity {
                 }
                 Log.d(TAG, "consistency_score_history: "+consistency_score_history);
 
-                double consistency_score = calculate_linkedlist_average(consistency_score_history);
+                consistency_score = calculate_linkedlist_average(consistency_score_history);
+
+                //consistencyTextView.setText(String.format("%.3f", consistency_score));
                 midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, shortBallName + shortTimeString +" "+ timeSinceLastCatch + " " +average_time_since_last_catch+ " "+ consistency_score + ", n: " + note + ", v: " + velocity));
                 if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                     getBleMidiOutputDeviceFromSpinner().sendMidiNoteOn(channel, note, velocity);
@@ -695,7 +700,10 @@ public class CentralActivity extends Activity {
 
         counterTextView = (TextView) findViewById(R.id.textView2);
         siteswapTextView = (TextView) findViewById(R.id.siteswaptv);
-        consistencyTextView = (TextView) findViewById(R.id.consistencytv);
+        consistencyTextView = (TextView) findViewById(R.id.datatv1);
+        dataTextView2 = (TextView) findViewById(R.id.datatv2);
+        dataTextView3 = (TextView) findViewById(R.id.datatv3);
+        dataTextView4 = (TextView) findViewById(R.id.datatv4);
         //counterTextView.setText("0");
 
         midiInputEventListView = (ListView) findViewById(R.id.catchHistory);
@@ -788,6 +796,7 @@ public class CentralActivity extends Activity {
             public void onClick(View v) {
                     catchCounter = 0;
                     counterTextView.setText(String.valueOf(catchCounter));
+                    completeCatchHistory.clear();
             }
         });
 

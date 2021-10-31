@@ -41,17 +41,24 @@ LICENSE
 
 TODO
 ====
-divide this_time_difference / average_for_this_ball = this catches_score
-combine x last catches to get the current consistency scores
+show a catches per minute
+
+make another time time consistency that is based on last x catches as well as the current one that we have now that is based on the whole pattern
+
+make something that checks to see if multiple identical catches are being submitted
+
+make separate catch counts for each ball
+
+new catch listing system
+  it should show time since last catch and intensity at a glance
+
 
 consistency considerations
   should we try to stay as close to the average timing for each ball, or should it be based on first n catches
 
-make a time consistency rating
-  every time a ball is caught, calculate the time since it was last caught, 
-  compare that time to the average time it takes to catch it and make a score for this
-  combine the scores off all balls
 make a intensity consistency rating
+  first make sure that catch feeling translates well to the number given
+  the process should be pretty similar to 
 make an overall consistency rating
 
 make a 2d array that holds the info from every catch, including the time

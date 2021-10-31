@@ -92,7 +92,7 @@
         android:textSize="60dp" />
 
     <TextView
-        android:id="@+id/consistencytv"
+        android:id="@+id/datatv1"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
@@ -102,7 +102,7 @@
         android:textSize="60dp" />
 
     <TextView
-        android:id="@+id/siteswaptv3"
+        android:id="@+id/datatv2"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
@@ -112,7 +112,7 @@
         android:textSize="60dp" />
 
     <TextView
-        android:id="@+id/siteswaptv4"
+        android:id="@+id/datatv3"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
@@ -122,7 +122,7 @@
         android:textSize="60dp" />
 
     <TextView
-        android:id="@+id/siteswaptv5"
+        android:id="@+id/datatv4"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
