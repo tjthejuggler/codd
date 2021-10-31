@@ -38,6 +38,7 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -451,7 +452,13 @@ public class CentralActivity extends Activity {
             if (copied_list.size()>0) {
                 double total = 0;
                 for (int i = 0; i < copied_list.size(); i++)
-                    total = total + copied_list.get(i);
+                    try {
+                        if (copied_list.get(i) != null) {
+                            total = total + copied_list.get(i);
+                        }
+                    }catch (ArrayIndexOutOfBoundsException e){}
+
+
                 average = total / copied_list.size();
             }
             return average;
@@ -502,7 +509,9 @@ public class CentralActivity extends Activity {
                 String shortBallName = ballName.replace("ODD","");
                 long average_time_since_last_catch = getAverageTimeSinceLastCatch(ballName);
                 if (consistency_score_history.size() > 10){
-                    consistency_score_history.removeFirst();
+                    try {
+                        consistency_score_history.removeFirst();
+                    }catch (NoSuchElementException e){}
                 }
                 if (average_time_since_last_catch > 0 ) {
                     double score = ((double)timeSinceLastCatch/average_time_since_last_catch)*100;
