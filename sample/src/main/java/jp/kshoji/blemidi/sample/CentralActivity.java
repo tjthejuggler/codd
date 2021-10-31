@@ -241,7 +241,9 @@ public class CentralActivity extends Activity {
 
     public String individualBallCount(String ballName){
         int catch_count = 0;
-        for(ArrayList<Object> row : completeCatchHistory) {
+        ArrayList<ArrayList<Object> > copied_list = new ArrayList<>();
+        copied_list.addAll(completeCatchHistory);
+        for(ArrayList<Object> row : copied_list) {
             if (String.valueOf(row.get(0)).contains(ballName)){
                 catch_count++;
             }
@@ -444,11 +446,13 @@ public class CentralActivity extends Activity {
 
         double calculate_linkedlist_average(LinkedList<Double> given_list){
             double average = 0;
-            if (given_list.size()>0) {
+            LinkedList<Double> copied_list = new LinkedList<>();
+            copied_list.addAll(given_list);
+            if (copied_list.size()>0) {
                 double total = 0;
-                for (int i = 0; i < given_list.size(); i++)
-                    total = total + given_list.get(i);
-                average = total / given_list.size();
+                for (int i = 0; i < copied_list.size(); i++)
+                    total = total + copied_list.get(i);
+                average = total / copied_list.size();
             }
             return average;
         }
@@ -504,7 +508,7 @@ public class CentralActivity extends Activity {
                     double score = ((double)timeSinceLastCatch/average_time_since_last_catch)*100;
                     consistency_score_history.add(score);
                 }
-                Log.d(TAG, "consistency_score_history: "+consistency_score_history);
+                //Log.d(TAG, "consistency_score_history: "+consistency_score_history);
 
                 consistency_score = calculate_linkedlist_average(consistency_score_history);
 

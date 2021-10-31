@@ -47,7 +47,7 @@ make another time time consistency that is based on last x catches as well as th
 
 make something that checks to see if multiple identical catches are being submitted
 
-make separate catch counts for each ball
+bug: two same balls used at once and it crashes
 
 new catch listing system
   it should show time since last catch and intensity at a glance
