@@ -239,6 +239,16 @@ public class CentralActivity extends Activity {
         return consistencyScore;
     }
 
+    public String individualBallCount(String ballName){
+        int catch_count = 0;
+        for(ArrayList<Object> row : completeCatchHistory) {
+            if (String.valueOf(row.get(0)).contains(ballName)){
+                catch_count++;
+            }
+        }
+        return (String.valueOf(catch_count));
+    }
+
     // User interface
     final Handler midiInputEventHandler = new Handler(new Handler.Callback() {
         @Override
@@ -277,8 +287,10 @@ public class CentralActivity extends Activity {
                 }
 
             }
-            counterTextView.setText(String.valueOf(catchCounter));
-            dataTextView2.setText(String.valueOf(completeCatchHistory.size()));
+            counterTextView.setText(String.valueOf(completeCatchHistory.size()));
+            dataTextView2.setText(String.valueOf(individualBallCount("Pnc")));
+            dataTextView3.setText(String.valueOf(individualBallCount("Gry")));
+            dataTextView4.setText(String.valueOf(individualBallCount("Trq")));
             //siteswapTextView.setText(getDetectedSiteswap());
             consistencyTextView.setText(String.format("%.3f", consistency_score));
             //consistencyTextView.setText(getConsistencyScore());
