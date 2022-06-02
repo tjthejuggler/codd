@@ -19,7 +19,6 @@
     <output-test url="file://$MODULE_DIR$/../../../UnityPlayerMock/build/classes/java/test" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../UnityPlayerMock">
-      <sourceFolder url="file://$MODULE_DIR$/../../../UnityPlayerMock/src/main/java" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../../UnityPlayerMock/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../UnityPlayerMock/build" />
     </content>

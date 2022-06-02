@@ -4,9 +4,20 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/codd.iml" filepath="$PROJECT_DIR$/.idea/modules/codd.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BLE-MIDI-library/codd.BLE-MIDI-library.iml" filepath="$PROJECT_DIR$/.idea/modules/BLE-MIDI-library/codd.BLE-MIDI-library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BLE-MIDI-library/codd.BLE-MIDI-library.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/BLE-MIDI-library/codd.BLE-MIDI-library.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BLE-MIDI-library/codd.BLE-MIDI-library.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BLE-MIDI-library/codd.BLE-MIDI-library.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BLE-MIDI-library/codd.BLE-MIDI-library.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/BLE-MIDI-library/codd.BLE-MIDI-library.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/UnityPlayerMock/codd.UnityPlayerMock.iml" filepath="$PROJECT_DIR$/.idea/modules/UnityPlayerMock/codd.UnityPlayerMock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/UnityPlayerMock/codd.UnityPlayerMock.main.iml" filepath="$PROJECT_DIR$/.idea/modules/UnityPlayerMock/codd.UnityPlayerMock.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/UnityPlayerMock/codd.UnityPlayerMock.test.iml" filepath="$PROJECT_DIR$/.idea/modules/UnityPlayerMock/codd.UnityPlayerMock.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample/codd.sample.iml" filepath="$PROJECT_DIR$/.idea/modules/sample/codd.sample.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample-wear/codd.sample-wear.iml" filepath="$PROJECT_DIR$/.idea/modules/sample-wear/codd.sample-wear.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample-wear/codd.sample-wear.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/sample-wear/codd.sample-wear.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample-wear/codd.sample-wear.main.iml" filepath="$PROJECT_DIR$/.idea/modules/sample-wear/codd.sample-wear.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample-wear/codd.sample-wear.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/sample-wear/codd.sample-wear.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample/codd.sample.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/sample/codd.sample.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample/codd.sample.main.iml" filepath="$PROJECT_DIR$/.idea/modules/sample/codd.sample.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample/codd.sample.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/sample/codd.sample.unitTest.iml" />
     </modules>
   </component>
 </project>

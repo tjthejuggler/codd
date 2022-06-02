@@ -5,9 +5,6 @@
       <module name="BLE-MIDI-for-Android.BLE-MIDI-library" target="11" />
       <module name="BLE-MIDI-for-Android.sample" target="11" />
       <module name="BLE-MIDI-for-Android.sample-wear" target="11" />
-      <module name="codd.BLE-MIDI-library" target="11" />
-      <module name="codd.sample" target="11" />
-      <module name="codd.sample-wear" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -54,8 +54,6 @@ import jp.kshoji.blemidi.sample.util.SoundMaker;
 import jp.kshoji.blemidi.sample.util.Tone;
 import jp.kshoji.blemidi.util.BleUtils;
 
-
-
 /**
  * Activity for BLE MIDI Central Application
  *
@@ -63,20 +61,15 @@ import jp.kshoji.blemidi.util.BleUtils;
  */
 public class CentralActivity extends Activity {
     BleMidiCentralProvider bleMidiCentralProvider;
-
     MenuItem toggleScanMenu;
     ArrayList<ArrayList<Object> > completeCatchHistory = new ArrayList<>();
     ArrayList<String> catchHistory = new ArrayList<String>();
     ArrayList<String> previousSiteswaps = new ArrayList<String>();
-
     LinkedList<Double> consistency_score_history = new LinkedList<Double>();
-
     int catchCounter;
     String previousName;
     double consistency_score = 0.000;
-
     Hashtable<String,Long> lastCaughtTimes = new Hashtable<String,Long>();
-
     TextView counterTextView;
     TextView siteswapTextView;
     TextView consistencyTextView;
@@ -84,25 +77,19 @@ public class CentralActivity extends Activity {
     TextView dataTextView3;
     TextView dataTextView4;
     ListView midiInputEventListView;
-
     boolean isScanning = false;
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.central, menu);
         toggleScanMenu = menu.getItem(0);
-
         if (isScanning) {
             toggleScanMenu.setTitle(R.string.stop_scan);
         } else {
             toggleScanMenu.setTitle(R.string.start_scan);
         }
-
         return true;
     }
-
     private static final int PERMISSION_REQUEST_FINE_LOCATION = 1;
-
     private int scanDuration;
     private void startScanDeviceWithRequestingPermission(int duration) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -114,11 +101,8 @@ public class CentralActivity extends Activity {
                 }
             }
         }
-
-        // already has permission
         bleMidiCentralProvider.startScanDevice(duration);
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -132,7 +116,6 @@ public class CentralActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -144,10 +127,8 @@ public class CentralActivity extends Activity {
             }
         }
     }
-
     public String getFullSiteswap(ArrayList reverseCatchHistory){
         String fullSiteswap = "";
-
         Log.d("TAG", "reverseCatchHistory " +reverseCatchHistory.subList(0, 10));
         for (int catchNum = 0; catchNum < 9; catchNum++){
             for (int nextCatch = catchNum+1; nextCatch < 10; nextCatch++){
@@ -158,16 +139,13 @@ public class CentralActivity extends Activity {
                     Log.d("TAG", "fullSiteswap: " +fullSiteswap);
                     break;
                 }
-
             }
         }
         return fullSiteswap;
     }
-
     static String getBaseSiteswap(String input){
         return input.replaceAll("^(.+?)\\1*$","$1");
     }
-
 //    public String getBaseSiteswap(String fullSiteswap){
 //        String baseSiteswap = "";
 //        for (int period = 1; period > fullSiteswap.length()-1; period++){
@@ -175,7 +153,6 @@ public class CentralActivity extends Activity {
 //        }
 //        return baseSiteswap;
 //    }
-
     public long getFormatttedSiteswap(String baseSiteswap){
         long largestNumber = Long.parseLong(baseSiteswap);
         for (int i = 0; i<baseSiteswap.length();i++){
@@ -188,7 +165,6 @@ public class CentralActivity extends Activity {
         }
         return largestNumber;
     }
-
     public boolean checkIfAllEqual(List<String> list) {
         for (String s : list) {
             if (!s.equals(list.get(0)))
@@ -196,7 +172,6 @@ public class CentralActivity extends Activity {
         }
         return true;
     }
-
     public String getDetectedSiteswap(){
         String detectedSiteswap = "????";
         long formattedSiteswap;
@@ -220,7 +195,6 @@ public class CentralActivity extends Activity {
             previousSiteswaps.add(Long.toString(formattedSiteswap));
             if (previousSiteswaps.size() > 10) {
                 Log.d("TAG", "previousSiteswaps: " +previousSiteswaps.subList(previousSiteswaps.size() - 10, previousSiteswaps.size()));
-
                 if (checkIfAllEqual(previousSiteswaps.subList(previousSiteswaps.size() - 10, previousSiteswaps.size()))) {
                     detectedSiteswap = Long.toString(formattedSiteswap);
                     Log.d("TAG", "detectedSiteswap: " + detectedSiteswap);
@@ -229,17 +203,10 @@ public class CentralActivity extends Activity {
         }
         return detectedSiteswap;
     }
-
-
-
     public String getConsistencyScore(){
         String consistencyScore = "????";
-
-
-
         return consistencyScore;
     }
-
     public String individualBallCount(String ballName){
         int catch_count = 0;
         ArrayList<ArrayList<Object> > copied_list = new ArrayList<>();
@@ -251,7 +218,6 @@ public class CentralActivity extends Activity {
         }
         return (String.valueOf(catch_count));
     }
-
     // User interface
     final Handler midiInputEventHandler = new Handler(new Handler.Callback() {
         @Override
@@ -261,11 +227,9 @@ public class CentralActivity extends Activity {
                 //msgString.split("Pball");
                 //msgString = msgString.substring(msgString.indexOf("ball:") + 1);
                 //String ballName = msgString.substring(0, msgString.indexOf("Pball:"));
-
                 midiInputEventAdapter.add((String)msg.obj);
                 int childCount = midiInputEventListView.getChildCount();
                 if (midiInputEventListView.getChildAt(childCount-1) != null) {
-
                     for (int i = 0; i < Math.min(childCount-1, childCount); i++) {
                         //Log.d("TAG", "i: "+i);
                         int our_index = midiInputEventListView.getCount() - (i+1) ;
@@ -288,7 +252,6 @@ public class CentralActivity extends Activity {
                         }
                     }
                 }
-
             }
             counterTextView.setText(String.valueOf(completeCatchHistory.size()));
             dataTextView2.setText(String.valueOf(individualBallCount("Pnc")));
@@ -301,19 +264,16 @@ public class CentralActivity extends Activity {
             return true;
         }
     });
-
     final Handler midiOutputEventHandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
             if (midiOutputEventAdapter != null) {
                 midiOutputEventAdapter.add((String)msg.obj);
             }
-
             // message handled successfully
             return true;
         }
     });
-
     final Handler midiOutputConnectionChangedHandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -328,19 +288,15 @@ public class CentralActivity extends Activity {
                     connectedOutputDevicesAdapter.notifyDataSetChanged();
                 }
             }
-
             // message handled successfully
             return true;
         }
     });
-
     ArrayAdapter<String> midiInputEventAdapter;
     ArrayAdapter<String> midiOutputEventAdapter;
     private ToggleButton thruToggleButton;
     Spinner deviceSpinner;
-
     ArrayAdapter<MidiOutputDevice> connectedOutputDevicesAdapter;
-
     // Play sounds
     AudioTrack audioTrack;
     Timer timer;
@@ -348,7 +304,6 @@ public class CentralActivity extends Activity {
     SoundMaker soundMaker;
     final Set<Tone> tones = new HashSet<>();
     int currentProgram = 0;
-
     /**
      * Choose device from spinner
      *
@@ -359,7 +314,6 @@ public class CentralActivity extends Activity {
             MidiOutputDevice device = connectedOutputDevicesAdapter.getItem(deviceSpinner.getSelectedItemPosition());
             if (device != null) {
                 Set<MidiOutputDevice> midiOutputDevices = bleMidiCentralProvider.getMidiOutputDevices();
-
                 if (midiOutputDevices.size() > 0) {
                     // returns the first one.
                     return (MidiOutputDevice) midiOutputDevices.toArray()[0];
@@ -368,29 +322,22 @@ public class CentralActivity extends Activity {
         }
         return null;
     }
-
-
-
     OnMidiInputEventListener onMidiInputEventListener = new OnMidiInputEventListener() {
         @Override
         public void onMidiSystemExclusive(@NonNull MidiInputDevice sender, @NonNull byte[] systemExclusive) {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "SystemExclusive from: " + sender.getDeviceName() + ", data:" + Arrays.toString(systemExclusive)));
-
             if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                 getBleMidiOutputDeviceFromSpinner().sendMidiSystemExclusive(systemExclusive);
                 midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "SystemExclusive from: " + sender.getDeviceName() + ", data:" + Arrays.toString(systemExclusive)));
             }
         }
-
         @Override
         public void onMidiNoteOff(@NonNull MidiInputDevice sender, int channel, int note, int velocity) {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "NoteOff from: " + sender.getDeviceName() + " channel: " + channel + ", note: " + note + ", velocity: " + velocity));
-
             if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                 getBleMidiOutputDeviceFromSpinner().sendMidiNoteOff(channel, note, velocity);
                 midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "NoteOff from: " + sender.getDeviceName() + " channel: " + channel + ", note: " + note + ", velocity: " + velocity));
             }
-
             synchronized (tones) {
                 Iterator<Tone> it = tones.iterator();
                 while (it.hasNext()) {
@@ -401,7 +348,6 @@ public class CentralActivity extends Activity {
                 }
             }
         }
-
         public Boolean throwIsValid(String ballName){
             Boolean isValid = true;
             Log.d("TAG", "throwIsValid: "+lastCaughtTimes);
@@ -420,10 +366,8 @@ public class CentralActivity extends Activity {
                 }
                 lastCaughtTimes.put(ballName, date.getTime());
             //}
-
             return isValid;
         }
-
         public long getTimeSinceLastCatch(String ballName, long date){
             long timeSinceLastCatch = 0;
             ArrayList<ArrayList<Object> > copied_list = new ArrayList<>();
@@ -444,7 +388,6 @@ public class CentralActivity extends Activity {
             average = total / given_list.size();
             return average;
         }
-
         double calculate_linkedlist_average(LinkedList<Double> given_list){
             double average = 0;
             LinkedList<Double> copied_list = new LinkedList<>();
@@ -457,13 +400,10 @@ public class CentralActivity extends Activity {
                             total = total + copied_list.get(i);
                         }
                     }catch (ArrayIndexOutOfBoundsException e){}
-
-
                 average = total / copied_list.size();
             }
             return average;
         }
-
         long getAverageTimeSinceLastCatch(String ballName){
             long average = 0;
             ArrayList<Long> all_times = new ArrayList<>();
@@ -477,7 +417,6 @@ public class CentralActivity extends Activity {
             average = calculate_list_average(all_times);
             return average;
         }
-
         public void fill_completeCatchHistory(String ballName, Date date, long timeSinceLastCatch, int velocity ){
             ArrayList<Object> this_catch_data = new ArrayList<>();
             this_catch_data.add(ballName);
@@ -488,10 +427,6 @@ public class CentralActivity extends Activity {
             //Log.d(TAG, "addToCatchHistory: "+ballName);
             //Log.d(TAG, "catchHistoryXXX: "+catchHistory);
         }
-
-
-
-
         @Override
         public void onMidiNoteOn(@NonNull MidiInputDevice sender, int channel, int note, int velocity) {
             String ballName = sender.getDeviceName();
@@ -502,10 +437,8 @@ public class CentralActivity extends Activity {
                 long timeSinceLastCatch = getTimeSinceLastCatch(ballName, date.getTime());
                 catchHistory.add(ballName);
                 fill_completeCatchHistory(ballName, date, timeSinceLastCatch, velocity);
-
                 String shortTimeString = String.valueOf(date.getTime());
                 shortTimeString = shortTimeString.substring(5, shortTimeString.length());
-
                 String shortBallName = ballName.replace("ODD","");
                 long average_time_since_last_catch = getAverageTimeSinceLastCatch(ballName);
                 if (consistency_score_history.size() > 10){
@@ -518,9 +451,7 @@ public class CentralActivity extends Activity {
                     consistency_score_history.add(score);
                 }
                 //Log.d(TAG, "consistency_score_history: "+consistency_score_history);
-
                 consistency_score = calculate_linkedlist_average(consistency_score_history);
-
                 //consistencyTextView.setText(String.format("%.3f", consistency_score));
                 midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, shortBallName + shortTimeString +" "+ timeSinceLastCatch + " " +average_time_since_last_catch+ " "+ consistency_score + ", n: " + note + ", v: " + velocity));
                 if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
@@ -528,9 +459,6 @@ public class CentralActivity extends Activity {
                     midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "NoteOn from: " + sender.getDeviceName() + " channel: " + channel + ", note: " + note + ", velocity: " + velocity));
                 }
             }
-
-
-
 //            synchronized (tones) {
 //                if (velocity == 0) {
 //                    Iterator<Tone> it = tones.iterator();
@@ -549,36 +477,29 @@ public class CentralActivity extends Activity {
 //                }
 //            }
         }
-
         @Override
         public void onMidiPolyphonicAftertouch(@NonNull MidiInputDevice sender, int channel, int note, int pressure) {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "PolyphonicAftertouch  from: " + sender.getDeviceName() + " channel: " + channel + ", note: " + note + ", pressure: " + pressure));
-
             if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                 getBleMidiOutputDeviceFromSpinner().sendMidiPolyphonicAftertouch(channel, note, pressure);
                 midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "PolyphonicAftertouch from: " + sender.getDeviceName() + " channel: " + channel + ", note: " + note + ", pressure: " + pressure));
             }
         }
-
         @Override
         public void onMidiControlChange(@NonNull MidiInputDevice sender, int channel, int function, int value) {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "ControlChange from: " + sender.getDeviceName() + ", channel: " + channel + ", function: " + function + ", value: " + value));
-
             if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                 getBleMidiOutputDeviceFromSpinner().sendMidiControlChange(channel, function, value);
                 midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "ControlChange from: " + sender.getDeviceName() + ", channel: " + channel + ", function: " + function + ", value: " + value));
             }
         }
-
         @Override
         public void onMidiProgramChange(@NonNull MidiInputDevice sender, int channel, int program) {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "ProgramChange from: " + sender.getDeviceName() + ", channel: " + channel + ", program: " + program));
-
             if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                 getBleMidiOutputDeviceFromSpinner().sendMidiProgramChange(channel, program);
                 midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "ProgramChange from: " + sender.getDeviceName() + ", channel: " + channel + ", program: " + program));
             }
-
             currentProgram = program % Tone.FORM_MAX;
             synchronized (tones) {
                 for (Tone tone : tones) {
@@ -586,127 +507,102 @@ public class CentralActivity extends Activity {
                 }
             }
         }
-
         @Override
         public void onMidiChannelAftertouch(@NonNull MidiInputDevice sender, int channel, int pressure) {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "ChannelAftertouch from: " + sender.getDeviceName() + ", channel: " + channel + ", pressure: " + pressure));
-
             if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                 getBleMidiOutputDeviceFromSpinner().sendMidiChannelAftertouch(channel, pressure);
                 midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "ChannelAftertouch from: " + sender.getDeviceName() + ", channel: " + channel + ", pressure: " + pressure));
             }
         }
-
         @Override
         public void onMidiPitchWheel(@NonNull MidiInputDevice sender, int channel, int amount) {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "PitchWheel from: " + sender.getDeviceName() + ", channel: " + channel + ", amount: " + amount));
-
             if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                 getBleMidiOutputDeviceFromSpinner().sendMidiPitchWheel(channel, amount);
                 midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "PitchWheel from: " + sender.getDeviceName() + ", channel: " + channel + ", amount: " + amount));
             }
         }
-
         @Override
         public void onMidiTimeCodeQuarterFrame(@NonNull MidiInputDevice sender, int timing) {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "TimeCodeQuarterFrame from: " + sender.getDeviceName() + ", timing: " + timing));
-
             if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                 getBleMidiOutputDeviceFromSpinner().sendMidiTimeCodeQuarterFrame(timing);
                 midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "TimeCodeQuarterFrame from: " + sender.getDeviceName() + ", timing: " + timing));
             }
         }
-
         @Override
         public void onMidiSongSelect(@NonNull MidiInputDevice sender, int song) {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "SongSelect from: " + sender.getDeviceName() + ", song: " + song));
-
             if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                 getBleMidiOutputDeviceFromSpinner().sendMidiSongSelect(song);
                 midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "SongSelect from: " + sender.getDeviceName() + ", song: " + song));
             }
         }
-
         @Override
         public void onMidiSongPositionPointer(@NonNull MidiInputDevice sender, int position) {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "SongPositionPointer from: " + sender.getDeviceName() + ", position: " + position));
-
             if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                 getBleMidiOutputDeviceFromSpinner().sendMidiSongPositionPointer(position);
                 midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "SongPositionPointer from: " + sender.getDeviceName() + ", position: " + position));
             }
         }
-
         @Override
         public void onMidiTuneRequest(@NonNull MidiInputDevice sender) {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "TuneRequest from: " + sender.getDeviceName()));
-
             if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                 getBleMidiOutputDeviceFromSpinner().sendMidiTuneRequest();
                 midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "TuneRequest from: " + sender.getDeviceName()));
             }
         }
-
         @Override
         public void onMidiTimingClock(@NonNull MidiInputDevice sender) {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "TimingClock from: " + sender.getDeviceName()));
-
             if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                 getBleMidiOutputDeviceFromSpinner().sendMidiTimingClock();
                 midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "TimingClock from: " + sender.getDeviceName()));
             }
         }
-
         @Override
         public void onMidiStart(@NonNull MidiInputDevice sender) {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "Start from: " + sender.getDeviceName()));
-
             if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                 getBleMidiOutputDeviceFromSpinner().sendMidiStart();
                 midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "Start from: " + sender.getDeviceName()));
             }
         }
-
         @Override
         public void onMidiContinue(@NonNull MidiInputDevice sender) {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "Continue from: " + sender.getDeviceName()));
-
             if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                 getBleMidiOutputDeviceFromSpinner().sendMidiContinue();
                 midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "Continue from: " + sender.getDeviceName()));
             }
         }
-
         @Override
         public void onMidiStop(@NonNull MidiInputDevice sender) {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "Stop from: " + sender.getDeviceName()));
-
             if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                 getBleMidiOutputDeviceFromSpinner().sendMidiStop();
                 midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "Stop from: " + sender.getDeviceName()));
             }
         }
-
         @Override
         public void onMidiActiveSensing(@NonNull MidiInputDevice sender) {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "ActiveSensing from: " + sender.getDeviceName()));
-
             if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                 getBleMidiOutputDeviceFromSpinner().sendMidiActiveSensing();
                 midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "ActiveSensing from: " + sender.getDeviceName()));
             }
         }
-
         @Override
         public void onMidiReset(@NonNull MidiInputDevice sender) {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "Reset from: " + sender.getDeviceName()));
-
             if (thruToggleButton != null && thruToggleButton.isChecked() && getBleMidiOutputDeviceFromSpinner() != null) {
                 getBleMidiOutputDeviceFromSpinner().sendMidiReset();
                 midiOutputEventHandler.sendMessage(Message.obtain(midiOutputEventHandler, 0, "Reset from: " + sender.getDeviceName()));
             }
         }
-
         @Override
         public void onRPNMessage(@NonNull MidiInputDevice sender, int channel, int function, int value) {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "RPN message from: " + sender.getDeviceName() + ", channel: " + channel + ", function: " + function + ", value: " + value));
@@ -717,12 +613,10 @@ public class CentralActivity extends Activity {
             midiInputEventHandler.sendMessage(Message.obtain(midiInputEventHandler, 0, "NRPN message from: " + sender.getDeviceName() + ", channel: " + channel + ", function: " + function + ", value: " + value));
         }
     };
-
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         counterTextView = (TextView) findViewById(R.id.textView2);
         siteswapTextView = (TextView) findViewById(R.id.siteswaptv);
         consistencyTextView = (TextView) findViewById(R.id.datatv1);
@@ -730,29 +624,23 @@ public class CentralActivity extends Activity {
         dataTextView3 = (TextView) findViewById(R.id.datatv3);
         dataTextView4 = (TextView) findViewById(R.id.datatv4);
         //counterTextView.setText("0");
-
         midiInputEventListView = (ListView) findViewById(R.id.catchHistory);
         midiInputEventAdapter = new ArrayAdapter<>(this, R.layout.midi_event, R.id.midiEventDescriptionTextView);
         midiInputEventAdapter = new ArrayAdapter<>(this, R.layout.midi_event, R.id.midiEventDescriptionTextView);
         midiInputEventListView.setAdapter(midiInputEventAdapter);
-
         ListView midiOutputEventListView = (ListView) findViewById(R.id.runHistory);
         midiOutputEventAdapter = new ArrayAdapter<>(this, R.layout.midi_event, R.id.midiEventDescriptionTextView);
         midiOutputEventListView.setAdapter(midiOutputEventAdapter);
-
         deviceSpinner = (Spinner) findViewById(R.id.deviceNameSpinner);
         connectedOutputDevicesAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.simple_spinner_dropdown_item, android.R.id.text1, new ArrayList<MidiOutputDevice>());
         deviceSpinner.setAdapter(connectedOutputDevicesAdapter);
-
         View.OnTouchListener onToneButtonTouchListener = new View.OnTouchListener() {
-
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 MidiOutputDevice midiOutputDevice = getBleMidiOutputDeviceFromSpinner();
                 if (midiOutputDevice == null) {
                     return false;
                 }
-
                 int note = 60 + Integer.parseInt((String) v.getTag());
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
@@ -770,17 +658,12 @@ public class CentralActivity extends Activity {
                 return false;
             }
         };
-
-
         int whiteKeyColor = 0xFFFFFFFF;
         int blackKeyColor = 0xFF808080;
-
-
         soundMaker = SoundMaker.getInstance();
         final int bufferSize = AudioTrack.getMinBufferSize(soundMaker.getSamplingRate(), AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT);
         int timerRate = bufferSize * 1000 / soundMaker.getSamplingRate() / 2;
         final short[] wav = new short[bufferSize / 2];
-
         audioTrack = prepareAudioTrack(soundMaker.getSamplingRate());
         timer = new Timer();
         timerTask = new TimerTask() {
@@ -803,7 +686,6 @@ public class CentralActivity extends Activity {
             }
         };
         timer.scheduleAtFixedRate(timerTask, 10, timerRate);
-
         Button disconnectButton = (Button) findViewById(R.id.disconnectButton);
         disconnectButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -814,7 +696,6 @@ public class CentralActivity extends Activity {
                 }
             }
         });
-
         Button resetButton = (Button) findViewById(R.id.resetButton);
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -824,12 +705,10 @@ public class CentralActivity extends Activity {
                     completeCatchHistory.clear();
             }
         });
-
         if (!BleUtils.isBluetoothEnabled(this)) {
             BleUtils.enableBluetooth(this);
             return;
         }
-
         if (!BleUtils.isBleSupported(this)) {
             // display alert and exit
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
@@ -852,19 +731,16 @@ public class CentralActivity extends Activity {
             setupCentralProvider();
         }
     }
-
     /**
      * Configure BleMidiCentralProvider instance
      */
     private void setupCentralProvider() {
         bleMidiCentralProvider = new BleMidiCentralProvider(this);
-
         bleMidiCentralProvider.setOnMidiDeviceAttachedListener(new OnMidiDeviceAttachedListener() {
             @Override
             public void onMidiInputDeviceAttached(@NonNull MidiInputDevice midiInputDevice) {
                 midiInputDevice.setOnMidiInputEventListener(onMidiInputEventListener);
             }
-
             @Override
             public void onMidiOutputDeviceAttached(@NonNull MidiOutputDevice midiOutputDevice) {
                 Message message = new Message();
@@ -873,13 +749,11 @@ public class CentralActivity extends Activity {
                 midiOutputConnectionChangedHandler.sendMessage(message);
             }
         });
-
         bleMidiCentralProvider.setOnMidiDeviceDetachedListener(new OnMidiDeviceDetachedListener() {
             @Override
             public void onMidiInputDeviceDetached(@NonNull MidiInputDevice midiInputDevice) {
                 // do nothing
             }
-
             @Override
             public void onMidiOutputDeviceDetached(@NonNull MidiOutputDevice midiOutputDevice) {
                 Message message = new Message();
@@ -888,7 +762,6 @@ public class CentralActivity extends Activity {
                 midiOutputConnectionChangedHandler.sendMessage(message);
             }
         });
-
         bleMidiCentralProvider.setOnMidiScanStatusListener(new OnMidiScanStatusListener() {
             @Override
             public void onMidiScanStatusChanged(boolean isScanning) {
@@ -902,22 +775,18 @@ public class CentralActivity extends Activity {
                 }
             }
         });
-
         // scan devices for 30 seconds
         startScanDeviceWithRequestingPermission(30000);
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == BleUtils.REQUEST_CODE_BLUETOOTH_ENABLE) {
             if (!BleUtils.isBluetoothEnabled(this)) {
                 // User selected NOT to use Bluetooth.
                 // do nothing
                 return;
             }
-
             if (!BleUtils.isBleSupported(this)) {
                 // display alert and exit
                 AlertDialog alertDialog = new AlertDialog.Builder(this).create();
@@ -941,13 +810,11 @@ public class CentralActivity extends Activity {
             }
         }
     }
-
     @Override
     protected void onDestroy() {
         if (bleMidiCentralProvider != null) {
             bleMidiCentralProvider.terminate();
         }
-
         if (timer != null) {
             try {
                 timer.cancel();
@@ -969,10 +836,8 @@ public class CentralActivity extends Activity {
                 audioTrack = null;
             }
         }
-
         super.onDestroy();
     }
-
     /**
      * @param samplingRate sampling rate for playing
      * @return configured {@link android.media.AudioTrack} instance
@@ -984,3 +849,11 @@ public class CentralActivity extends Activity {
         return result;
     }
 }
+//todo
+//update balls firmware
+//figure out how consistancy score is determined
+//find out what each number means on display - maybe it is a consistent score for each ball
+//make a sound if consistency score falls under a certain amount - this should be a setting
+//go through and check to see what functions are not being used by commenting them out and testing without them
+//make a timer that starts on first catch so that we can easily get a throws per minute/second or whatever
+//a timer that goes off when it reaches a certain time
