@@ -1,97 +1,107 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:1-35:12
-INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:1-35:12
-INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:1-35:12
-INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:1-35:12
-MERGED from [:BLE-MIDI-library] /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-14:12
-MERGED from [jp.kshoji:javax-sound-midi:0.0.4] /home/tim/.gradle/caches/transforms-2/files-2.1/9017a76760ab2a6ddfed89264fca737b/javax-sound-midi-0.0.4/AndroidManifest.xml:2:1-9:12
-INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:1-35:12
-INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:1-35:12
-INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:1-35:12
+ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:1-39:12
+INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:1-39:12
+INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:1-39:12
+INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:1-39:12
+MERGED from [:BLE-MIDI-library] /home/lunkwill/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-14:12
+MERGED from [jp.kshoji:javax-sound-midi:0.0.4] /home/lunkwill/.gradle/caches/transforms-2/files-2.1/9017a76760ab2a6ddfed89264fca737b/javax-sound-midi-0.0.4/AndroidManifest.xml:2:1-9:12
+INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:1-39:12
+INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:1-39:12
+INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:1-39:12
 	package
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:3:5-39
-		INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
-		INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:3:5-39
+		INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
+		INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:1-35:12
-		INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
+		INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:1-39:12
+		INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
 	android:versionCode
-		INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:1-35:12
-		INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
+		INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:1-39:12
+		INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:11-69
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:2:11-69
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:5:5-79
+ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:5:5-79
 	android:name
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:5:22-76
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:5:22-76
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:6:5-80
+	android:name
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:6:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:7:5-80
+	android:name
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:7:22-78
 application
-ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:7:5-33:19
+ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:10:5-37:19
+	android:requestLegacyExternalStorage
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:11:9-52
 	android:label
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:10:9-41
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:14:9-41
 	android:icon
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:9:9-45
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:13:9-45
 	android:allowBackup
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:8:9-35
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:12:9-35
 	android:theme
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:11:9-40
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:15:9-40
 activity#jp.kshoji.blemidi.sample.CentralActivity
-ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:12:9-21:20
+ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:16:9-25:20
 	android:label
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:14:13-53
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:18:13-53
 	android:launchMode
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:15:13-44
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:19:13-44
 	android:name
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:13:13-44
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:17:13-44
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:16:13-20:29
+ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:20:13-24:29
 action#android.intent.action.MAIN
-ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:17:17-69
+ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:21:17-69
 	android:name
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:17:25-66
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:21:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:19:17-77
+ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:23:17-77
 	android:name
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:19:27-74
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:23:27-74
 activity#jp.kshoji.blemidi.sample.PeripheralActivity
-ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:23:9-32:20
+ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:27:9-36:20
 	android:label
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:25:13-56
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:29:13-56
 	android:launchMode
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:26:13-44
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:30:13-44
 	android:name
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:24:13-47
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml:28:13-47
 uses-sdk
-INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
-INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
-MERGED from [:BLE-MIDI-library] /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:BLE-MIDI-library] /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [jp.kshoji:javax-sound-midi:0.0.4] /home/tim/.gradle/caches/transforms-2/files-2.1/9017a76760ab2a6ddfed89264fca737b/javax-sound-midi-0.0.4/AndroidManifest.xml:5:5-7:41
-MERGED from [jp.kshoji:javax-sound-midi:0.0.4] /home/tim/.gradle/caches/transforms-2/files-2.1/9017a76760ab2a6ddfed89264fca737b/javax-sound-midi-0.0.4/AndroidManifest.xml:5:5-7:41
-INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
-INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
+INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
+INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
+MERGED from [:BLE-MIDI-library] /home/lunkwill/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:BLE-MIDI-library] /home/lunkwill/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [jp.kshoji:javax-sound-midi:0.0.4] /home/lunkwill/.gradle/caches/transforms-2/files-2.1/9017a76760ab2a6ddfed89264fca737b/javax-sound-midi-0.0.4/AndroidManifest.xml:5:5-7:41
+MERGED from [jp.kshoji:javax-sound-midi:0.0.4] /home/lunkwill/.gradle/caches/transforms-2/files-2.1/9017a76760ab2a6ddfed89264fca737b/javax-sound-midi-0.0.4/AndroidManifest.xml:5:5-7:41
+INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
+INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
-		INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
+		INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
+		INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
-		ADDED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
-		INJECTED from /home/tim/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
+		INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
+		ADDED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
+		INJECTED from /home/lunkwill/AndroidStudioProjects/codd/sample/src/main/AndroidManifest.xml
 uses-permission#android.permission.BLUETOOTH
-ADDED from [:BLE-MIDI-library] /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-68
+ADDED from [:BLE-MIDI-library] /home/lunkwill/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-68
 	android:name
-		ADDED from [:BLE-MIDI-library] /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:7:22-65
+		ADDED from [:BLE-MIDI-library] /home/lunkwill/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:7:22-65
 uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from [:BLE-MIDI-library] /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:5-74
+ADDED from [:BLE-MIDI-library] /home/lunkwill/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:5-74
 	android:name
-		ADDED from [:BLE-MIDI-library] /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:22-71
+		ADDED from [:BLE-MIDI-library] /home/lunkwill/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:22-71
 uses-feature#android.hardware.bluetooth_le
-ADDED from [:BLE-MIDI-library] /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:5-12:35
+ADDED from [:BLE-MIDI-library] /home/lunkwill/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:5-12:35
 	android:required
-		ADDED from [:BLE-MIDI-library] /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:9-32
+		ADDED from [:BLE-MIDI-library] /home/lunkwill/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:9-32
 	android:name
-		ADDED from [:BLE-MIDI-library] /home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:9-53
+		ADDED from [:BLE-MIDI-library] /home/lunkwill/AndroidStudioProjects/codd/BLE-MIDI-library/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:9-53

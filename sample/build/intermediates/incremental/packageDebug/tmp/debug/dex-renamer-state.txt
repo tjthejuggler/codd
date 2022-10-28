@@ -1,4 +1,4 @@
-#Thu Jun 02 17:17:34 TRT 2022
+#Wed Oct 26 11:19:20 CEST 2022
 base.0=/home/lunkwill/AndroidStudioProjects/codd/sample/build/intermediates/dex/debug/mergeDexDebug/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

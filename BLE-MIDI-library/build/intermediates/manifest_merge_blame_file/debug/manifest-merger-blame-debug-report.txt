@@ -3,20 +3,20 @@
 3    package="jp.kshoji.blemidi" >
 4
 5    <uses-sdk android:minSdkVersion="18" />
-5-->/home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml
+5-->/home/lunkwill/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml
 6
 7    <uses-permission android:name="android.permission.BLUETOOTH" />
-7-->/home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:4:5-68
-7-->/home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:4:22-65
+7-->/home/lunkwill/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:4:5-68
+7-->/home/lunkwill/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:4:22-65
 8    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-8-->/home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:5:5-74
-8-->/home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:5:22-71
+8-->/home/lunkwill/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:5:5-74
+8-->/home/lunkwill/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:5:22-71
 9
 10    <uses-feature
-10-->/home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:7:5-90
+10-->/home/lunkwill/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:7:5-90
 11        android:name="android.hardware.bluetooth_le"
-11-->/home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:7:19-63
+11-->/home/lunkwill/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:7:19-63
 12        android:required="true" />
-12-->/home/tim/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:7:64-87
+12-->/home/lunkwill/AndroidStudioProjects/codd/BLE-MIDI-library/src/main/AndroidManifest.xml:7:64-87
 13
 14</manifest>

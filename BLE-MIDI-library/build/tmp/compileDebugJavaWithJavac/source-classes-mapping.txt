@@ -4,11 +4,11 @@ jp/kshoji/blemidi/listener/OnMidiDeviceDetachedListener.java
  jp.kshoji.blemidi.listener.OnMidiDeviceDetachedListener
 jp/kshoji/blemidi/util/Constants.java
  jp.kshoji.blemidi.util.Constants
+jp/kshoji/javax/sound/midi/ble/BleMidiTransmitter.java
+ jp.kshoji.javax.sound.midi.ble.BleMidiTransmitter
 jp/kshoji/blemidi/service/BleMidiPeripheralService.java
  jp.kshoji.blemidi.service.BleMidiPeripheralService
  jp.kshoji.blemidi.service.BleMidiPeripheralService$LocalBinder
-jp/kshoji/javax/sound/midi/ble/BleMidiTransmitter.java
- jp.kshoji.javax.sound.midi.ble.BleMidiTransmitter
 jp/kshoji/blemidi/device/MidiInputDevice.java
  jp.kshoji.blemidi.device.MidiInputDevice
 jp/kshoji/blemidi/listener/OnMidiScanStatusListener.java
@@ -68,22 +68,22 @@ jp/kshoji/blemidi/listener/OnMidiDeviceAttachedListener.java
  jp.kshoji.blemidi.listener.OnMidiDeviceAttachedListener
 jp/kshoji/blemidi/util/BleUuidUtils.java
  jp.kshoji.blemidi.util.BleUuidUtils
+jp/kshoji/javax/sound/midi/ble/BleMidiSynthesizer.java
+ jp.kshoji.javax.sound.midi.ble.BleMidiSynthesizer
 jp/kshoji/blemidi/central/BleMidiCallback.java
  jp.kshoji.blemidi.central.BleMidiCallback
  jp.kshoji.blemidi.central.BleMidiCallback$BondingBroadcastReceiver
  jp.kshoji.blemidi.central.BleMidiCallback$InternalMidiInputDevice
  jp.kshoji.blemidi.central.BleMidiCallback$InternalMidiOutputDevice
-jp/kshoji/javax/sound/midi/ble/BleMidiSynthesizer.java
- jp.kshoji.javax.sound.midi.ble.BleMidiSynthesizer
 jp/kshoji/javax/sound/midi/ble/BleMidiReceiver.java
  jp.kshoji.javax.sound.midi.ble.BleMidiReceiver
+jp/kshoji/javax/sound/midi/ble/BleMidiDevice.java
+ jp.kshoji.javax.sound.midi.ble.BleMidiDevice
 jp/kshoji/unity/midi/BleMidiUnityPlugin.java
  jp.kshoji.unity.midi.BleMidiUnityPlugin
  jp.kshoji.unity.midi.BleMidiUnityPlugin$1
  jp.kshoji.unity.midi.BleMidiUnityPlugin$2
  jp.kshoji.unity.midi.BleMidiUnityPlugin$3
-jp/kshoji/javax/sound/midi/ble/BleMidiDevice.java
- jp.kshoji.javax.sound.midi.ble.BleMidiDevice
 jp/kshoji/blemidi/listener/OnMidiInputEventListener.java
  jp.kshoji.blemidi.listener.OnMidiInputEventListener
 jp/kshoji/javax/sound/midi/BleMidiSystem.java

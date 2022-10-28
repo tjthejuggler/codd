@@ -14,6 +14,7 @@ import android.media.AudioManager;
 import android.media.AudioTrack;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
@@ -29,6 +30,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -427,11 +432,32 @@ public class CentralActivity extends Activity {
             //Log.d(TAG, "addToCatchHistory: "+ballName);
             //Log.d(TAG, "catchHistoryXXX: "+catchHistory);
         }
+        public void appendCatchHistoryTextFile(){
+            File sdcard = Environment.getExternalStorageDirectory();
+            File dir = new File(sdcard.getAbsolutePath() + "/text/");
+            dir.mkdir();
+            File file = new File(dir, "sample.txt");
+            FileOutputStream os = null;
+            Log.d(TAG, "writetext1" + dir);
+            try {
+                Log.d(TAG, "writetext2: ");
+                os = new FileOutputStream(file, true);
+                os.write("test".toString().getBytes());
+                //TODO instead of test being written over and over here, just add timestamps and newlines
+                //  maybe it would be useful to make a split between each session ,but this is just for debugging the watch app so n big deal
+                os.close();
+            } catch (IOException e) {
+                Log.d(TAG, "writetext3: ");
+                e.printStackTrace();
+            }
+
+        }
         @Override
         public void onMidiNoteOn(@NonNull MidiInputDevice sender, int channel, int note, int velocity) {
             String ballName = sender.getDeviceName();
             if (throwIsValid(ballName)) {
                 catchCounter++; //TODO maybe remove this and just use catchHistory
+                appendCatchHistoryTextFile();
                 previousName = ballName; //TODO maybe remove this and just use catchHistory
                 Date date = new Date();
                 long timeSinceLastCatch = getTimeSinceLastCatch(ballName, date.getTime());
